@@ -3,3 +3,9 @@ C:\ToHow\tohow.webapi\tohow.Domain\bin\Debug\tohow.Domain.dll
 C:\ToHow\tohow.webapi\tohow.Domain\bin\Debug\tohow.Domain.pdb
 C:\ToHow\tohow.webapi\tohow.Domain\obj\Debug\tohow.Domain.dll
 C:\ToHow\tohow.webapi\tohow.Domain\obj\Debug\tohow.Domain.pdb
+C:\Git\tohow.webapi\tohow.Domain\bin\Debug\tohow.Domain.dll.config
+C:\Git\tohow.webapi\tohow.Domain\bin\Debug\tohow.Domain.dll
+C:\Git\tohow.webapi\tohow.Domain\bin\Debug\tohow.Domain.pdb
+C:\Git\tohow.webapi\tohow.Domain\obj\Debug\tohow.Domain.csprojResolveAssemblyReference.cache
+C:\Git\tohow.webapi\tohow.Domain\obj\Debug\tohow.Domain.dll
+C:\Git\tohow.webapi\tohow.Domain\obj\Debug\tohow.Domain.pdb
