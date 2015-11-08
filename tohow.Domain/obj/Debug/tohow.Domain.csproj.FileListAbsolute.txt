@@ -1,0 +1,5 @@
+C:\ToHow\tohow.webapi\tohow.Domain\bin\Debug\tohow.Domain.dll.config
+C:\ToHow\tohow.webapi\tohow.Domain\bin\Debug\tohow.Domain.dll
+C:\ToHow\tohow.webapi\tohow.Domain\bin\Debug\tohow.Domain.pdb
+C:\ToHow\tohow.webapi\tohow.Domain\obj\Debug\tohow.Domain.dll
+C:\ToHow\tohow.webapi\tohow.Domain\obj\Debug\tohow.Domain.pdb

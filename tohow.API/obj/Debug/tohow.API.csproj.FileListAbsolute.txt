@@ -1,0 +1,12 @@
+C:\ToHow\tohow.webapi\tohow.API\bin\tohow.API.dll.config
+C:\ToHow\tohow.webapi\tohow.API\bin\tohow.API.dll
+C:\ToHow\tohow.webapi\tohow.API\bin\tohow.API.pdb
+C:\ToHow\tohow.webapi\tohow.API\bin\EntityFramework.dll
+C:\ToHow\tohow.webapi\tohow.API\bin\EntityFramework.SqlServer.dll
+C:\ToHow\tohow.webapi\tohow.API\bin\EntityFramework.xml
+C:\ToHow\tohow.webapi\tohow.API\bin\EntityFramework.SqlServer.xml
+C:\ToHow\tohow.webapi\tohow.API\obj\Debug\tohow.API.dll
+C:\ToHow\tohow.webapi\tohow.API\obj\Debug\tohow.API.pdb
+C:\ToHow\tohow.webapi\tohow.API\bin\NLog.dll
+C:\ToHow\tohow.webapi\tohow.API\bin\NLog.xml
+C:\ToHow\tohow.webapi\tohow.API\obj\Debug\tohow.API.csprojResolveAssemblyReference.cache
