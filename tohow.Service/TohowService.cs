@@ -7,6 +7,7 @@ using tohow.Interface.Service;
 using tohow.Data.Repository;
 using tohow.Domain.DTO;
 using tohow.Interface.Repository;
+using tohow.Domain.Extensions;
 
 namespace tohow.Service
 {
@@ -23,7 +24,12 @@ namespace tohow.Service
             Image img = new Image();
 
             try {
-                var imgTT =  _reposTohowDev.GetImageById(imageId);
+                var imgTT = _reposTohowDev.GetImageByIdAsync(imageId);
+
+                if (imgTT == null)
+                    throw new ApplicationException("Invalid Image");
+
+                img = imgTT.ConverToImageDTO();
 
 
                 if (imgTT == null)
