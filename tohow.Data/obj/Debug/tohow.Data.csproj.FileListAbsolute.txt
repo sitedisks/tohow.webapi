@@ -26,3 +26,17 @@ C:\Git\tohow.webapi\tohow.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Git\tohow.webapi\tohow.Data\obj\Debug\tohow.Data.csprojResolveAssemblyReference.cache
 C:\Git\tohow.webapi\tohow.Data\obj\Debug\tohow.Data.dll
 C:\Git\tohow.webapi\tohow.Data\obj\Debug\tohow.Data.pdb
+C:\GitHub\tohow.webapi\tohow.Data\obj\Debug\tohow.Data.csprojResolveAssemblyReference.cache
+C:\GitHub\tohow.webapi\tohow.Data\bin\Debug\tohow.Data.dll.config
+C:\GitHub\tohow.webapi\tohow.Data\bin\Debug\tohow.Data.dll
+C:\GitHub\tohow.webapi\tohow.Data\bin\Debug\tohow.Data.pdb
+C:\GitHub\tohow.webapi\tohow.Data\bin\Debug\EntityFramework.dll
+C:\GitHub\tohow.webapi\tohow.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\GitHub\tohow.webapi\tohow.Data\bin\Debug\tohow.Domain.dll
+C:\GitHub\tohow.webapi\tohow.Data\bin\Debug\tohow.Interface.dll
+C:\GitHub\tohow.webapi\tohow.Data\bin\Debug\tohow.Domain.pdb
+C:\GitHub\tohow.webapi\tohow.Data\bin\Debug\tohow.Interface.pdb
+C:\GitHub\tohow.webapi\tohow.Data\bin\Debug\EntityFramework.xml
+C:\GitHub\tohow.webapi\tohow.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\GitHub\tohow.webapi\tohow.Data\obj\Debug\tohow.Data.dll
+C:\GitHub\tohow.webapi\tohow.Data\obj\Debug\tohow.Data.pdb

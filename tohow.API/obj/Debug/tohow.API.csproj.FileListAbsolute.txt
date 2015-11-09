@@ -22,3 +22,15 @@ C:\Git\tohow.webapi\tohow.API\bin\NLog.xml
 C:\Git\tohow.webapi\tohow.API\obj\Debug\tohow.API.csprojResolveAssemblyReference.cache
 C:\Git\tohow.webapi\tohow.API\obj\Debug\tohow.API.dll
 C:\Git\tohow.webapi\tohow.API\obj\Debug\tohow.API.pdb
+C:\GitHub\tohow.webapi\tohow.API\bin\tohow.API.dll.config
+C:\GitHub\tohow.webapi\tohow.API\bin\tohow.API.dll
+C:\GitHub\tohow.webapi\tohow.API\bin\tohow.API.pdb
+C:\GitHub\tohow.webapi\tohow.API\obj\Debug\tohow.API.dll
+C:\GitHub\tohow.webapi\tohow.API\obj\Debug\tohow.API.pdb
+C:\GitHub\tohow.webapi\tohow.API\bin\EntityFramework.dll
+C:\GitHub\tohow.webapi\tohow.API\bin\EntityFramework.SqlServer.dll
+C:\GitHub\tohow.webapi\tohow.API\bin\NLog.dll
+C:\GitHub\tohow.webapi\tohow.API\bin\EntityFramework.xml
+C:\GitHub\tohow.webapi\tohow.API\bin\EntityFramework.SqlServer.xml
+C:\GitHub\tohow.webapi\tohow.API\bin\NLog.xml
+C:\GitHub\tohow.webapi\tohow.API\obj\Debug\tohow.API.csprojResolveAssemblyReference.cache

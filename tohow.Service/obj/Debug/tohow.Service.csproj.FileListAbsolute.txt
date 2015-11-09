@@ -13,3 +13,4 @@ C:\ToHow\tohow.webapi\tohow.Service\bin\Debug\tohow.Interface.pdb
 C:\ToHow\tohow.webapi\tohow.Service\bin\Debug\EntityFramework.xml
 C:\ToHow\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.csprojResolveAssemblyReference.cache
 C:\Git\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.csprojResolveAssemblyReference.cache
+C:\GitHub\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.csprojResolveAssemblyReference.cache
