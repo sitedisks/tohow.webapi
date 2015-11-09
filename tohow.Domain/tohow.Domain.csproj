@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Database\tblImage.cs" />
     <Compile Include="DTO\Image.cs" />
+    <Compile Include="Extensions\DTOConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />

@@ -19,7 +19,7 @@ namespace tohow.Data.Repository
             _db = db;
         }
 
-        public async Task<tblImage> GetImageById(Guid imageId) {
+        public async Task<tblImage> GetImageByIdAsync(Guid imageId) {
             tblImage img = null;
 
             try {
@@ -34,7 +34,7 @@ namespace tohow.Data.Repository
             return img;
         }
 
-        public async Task<IEnumerable<tblImage>> GetImagesByUserId(int userId)
+        public async Task<IEnumerable<tblImage>> GetImagesByUserIdAsync(int userId)
         {
             IList<tblImage> imgList = new List<tblImage>();
             try {
