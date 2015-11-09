@@ -29,7 +29,7 @@ namespace tohow.Service
                 if (imgTT == null)
                     throw new ApplicationException("Invalid Image");
 
-                img = imgTT.ConverToImageDTO();
+                //img = imgTT.ConverToImageDTO();
 
 
                 if (imgTT == null)
@@ -42,7 +42,7 @@ namespace tohow.Service
                 throw new ApplicationException("Error retriving Image", ex);
             }
 
-            return img;
+            return null;
         }
     }
 }
