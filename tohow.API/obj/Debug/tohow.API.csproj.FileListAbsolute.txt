@@ -33,3 +33,4 @@ C:\GitHub\tohow.webapi\tohow.API\bin\NLog.dll
 C:\GitHub\tohow.webapi\tohow.API\bin\EntityFramework.xml
 C:\GitHub\tohow.webapi\tohow.API\bin\EntityFramework.SqlServer.xml
 C:\GitHub\tohow.webapi\tohow.API\bin\NLog.xml
+C:\GitHub\tohow.webapi\tohow.API\obj\Debug\tohow.API.csprojResolveAssemblyReference.cache
