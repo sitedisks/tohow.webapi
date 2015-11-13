@@ -9,7 +9,7 @@ namespace tohow.Domain.DTO
     public class Image
     {
         public Guid ImageId { get; set; }
-        public int UserId { get; set; }
+        public long UserId { get; set; }
         public bool IsDeleted { get; set; }
         public string URL { get; set; }
     }

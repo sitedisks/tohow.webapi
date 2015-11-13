@@ -10,8 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8F6978
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tohow.API", "tohow.API\tohow.API.csproj", "{459876D5-5497-47E2-93C3-3097C949AF42}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tohow.Data", "tohow.Data\tohow.Data.csproj", "{5D88D68C-5301-4FA4-AC5C-A960E2B6D979}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tohow.Domain", "tohow.Domain\tohow.Domain.csproj", "{F1EB8123-928A-4B50-9346-753BE7BAA76C}"
@@ -19,6 +17,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tohow.Interface", "tohow.Interface\tohow.Interface.csproj", "{2BD934D8-9EB2-4B20-BD3E-E3ABB31733E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tohow.Service", "tohow.Service\tohow.Service.csproj", "{BA086771-3278-4DA1-99AA-BD4FB6EC6091}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tohow.API", "tohow.API\tohow.API.csproj", "{C2DD1FC0-0984-41F4-B45A-AC80E0C826BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,16 +32,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{459876D5-5497-47E2-93C3-3097C949AF42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{459876D5-5497-47E2-93C3-3097C949AF42}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{459876D5-5497-47E2-93C3-3097C949AF42}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{459876D5-5497-47E2-93C3-3097C949AF42}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{459876D5-5497-47E2-93C3-3097C949AF42}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{459876D5-5497-47E2-93C3-3097C949AF42}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{459876D5-5497-47E2-93C3-3097C949AF42}.Release|Any CPU.Build.0 = Release|Any CPU
-		{459876D5-5497-47E2-93C3-3097C949AF42}.Release|ARM.ActiveCfg = Release|Any CPU
-		{459876D5-5497-47E2-93C3-3097C949AF42}.Release|x64.ActiveCfg = Release|Any CPU
-		{459876D5-5497-47E2-93C3-3097C949AF42}.Release|x86.ActiveCfg = Release|Any CPU
 		{5D88D68C-5301-4FA4-AC5C-A960E2B6D979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5D88D68C-5301-4FA4-AC5C-A960E2B6D979}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D88D68C-5301-4FA4-AC5C-A960E2B6D979}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -82,6 +72,16 @@ Global
 		{BA086771-3278-4DA1-99AA-BD4FB6EC6091}.Release|ARM.ActiveCfg = Release|Any CPU
 		{BA086771-3278-4DA1-99AA-BD4FB6EC6091}.Release|x64.ActiveCfg = Release|Any CPU
 		{BA086771-3278-4DA1-99AA-BD4FB6EC6091}.Release|x86.ActiveCfg = Release|Any CPU
+		{C2DD1FC0-0984-41F4-B45A-AC80E0C826BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2DD1FC0-0984-41F4-B45A-AC80E0C826BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2DD1FC0-0984-41F4-B45A-AC80E0C826BB}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C2DD1FC0-0984-41F4-B45A-AC80E0C826BB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C2DD1FC0-0984-41F4-B45A-AC80E0C826BB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C2DD1FC0-0984-41F4-B45A-AC80E0C826BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2DD1FC0-0984-41F4-B45A-AC80E0C826BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2DD1FC0-0984-41F4-B45A-AC80E0C826BB}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C2DD1FC0-0984-41F4-B45A-AC80E0C826BB}.Release|x64.ActiveCfg = Release|Any CPU
+		{C2DD1FC0-0984-41F4-B45A-AC80E0C826BB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

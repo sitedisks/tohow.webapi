@@ -8,13 +8,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace tohow.Domain.Database
 {
-    [Table("tblImage")]
+    [Table("tbImage")]
     public class tblImage
     {
         [Key]
         public Guid Id { get; set; }
         [Column("UploaderUserId")]
-        public int userId { get; set; }
+        public long userId { get; set; }
         public bool IsDeleted { get; set; }
         public string Uri { get; set; }
     }

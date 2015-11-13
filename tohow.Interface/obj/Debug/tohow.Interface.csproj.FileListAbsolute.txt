@@ -22,7 +22,6 @@ C:\Git\tohow.webapi\tohow.Interface\bin\Debug\EntityFramework.SqlServer.xml
 C:\Git\tohow.webapi\tohow.Interface\obj\Debug\tohow.Interface.csprojResolveAssemblyReference.cache
 C:\Git\tohow.webapi\tohow.Interface\obj\Debug\tohow.Interface.dll
 C:\Git\tohow.webapi\tohow.Interface\obj\Debug\tohow.Interface.pdb
-C:\GitHub\tohow.webapi\tohow.Interface\obj\Debug\tohow.Interface.csprojResolveAssemblyReference.cache
 C:\GitHub\tohow.webapi\tohow.Interface\bin\Debug\tohow.Interface.dll.config
 C:\GitHub\tohow.webapi\tohow.Interface\bin\Debug\tohow.Interface.dll
 C:\GitHub\tohow.webapi\tohow.Interface\bin\Debug\tohow.Interface.pdb
@@ -32,5 +31,6 @@ C:\GitHub\tohow.webapi\tohow.Interface\bin\Debug\tohow.Domain.dll
 C:\GitHub\tohow.webapi\tohow.Interface\bin\Debug\tohow.Domain.pdb
 C:\GitHub\tohow.webapi\tohow.Interface\bin\Debug\EntityFramework.xml
 C:\GitHub\tohow.webapi\tohow.Interface\bin\Debug\EntityFramework.SqlServer.xml
+C:\GitHub\tohow.webapi\tohow.Interface\obj\Debug\tohow.Interface.csprojResolveAssemblyReference.cache
 C:\GitHub\tohow.webapi\tohow.Interface\obj\Debug\tohow.Interface.dll
 C:\GitHub\tohow.webapi\tohow.Interface\obj\Debug\tohow.Interface.pdb

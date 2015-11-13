@@ -22,7 +22,9 @@ namespace tohow.Data.Repository
         public async Task<tblImage> GetImageByIdAsync(Guid imageId) {
             tblImage img = null;
 
-            try {
+            try
+            { 
+                //tbImage
                 img = await _db.tblImages.FirstOrDefaultAsync(x => x.Id == imageId && !x.IsDeleted);
             }
             catch (DataException dex)

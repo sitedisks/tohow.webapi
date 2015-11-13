@@ -19,30 +19,24 @@ namespace tohow.Service
             _reposTohowDev = repoTH;
         }
         // use the repos and implement the interface function
-        public Task<Image> GetImageByImageId(Guid imageId) {
+        public async Task<Image> GetImageByImageId(Guid imageId) {
 
             Image img = new Image();
 
             try {
-                var imgTT = _reposTohowDev.GetImageByIdAsync(imageId);
+                var tblImg = await _reposTohowDev.GetImageByIdAsync(imageId);
 
-                if (imgTT == null)
+                if (tblImg == null)
                     throw new ApplicationException("Invalid Image");
 
-                //img = imgTT.ConverToImageDTO();
-
-
-                if (imgTT == null)
-                    throw new ApplicationException("Invalid Image!");
-
-                
+                img = tblImg.ConverToImageDTO(); 
             }
             catch(Exception ex)
             {
                 throw new ApplicationException("Error retriving Image", ex);
             }
 
-            return null;
+            return img;
         }
     }
 }

@@ -13,7 +13,6 @@ C:\ToHow\tohow.webapi\tohow.Service\bin\Debug\tohow.Interface.pdb
 C:\ToHow\tohow.webapi\tohow.Service\bin\Debug\EntityFramework.xml
 C:\ToHow\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.csprojResolveAssemblyReference.cache
 C:\Git\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.csprojResolveAssemblyReference.cache
-C:\GitHub\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.csprojResolveAssemblyReference.cache
 C:\GitHub\tohow.webapi\tohow.Service\bin\Debug\tohow.Service.dll.config
 C:\GitHub\tohow.webapi\tohow.Service\bin\Debug\tohow.Service.dll
 C:\GitHub\tohow.webapi\tohow.Service\bin\Debug\tohow.Service.pdb
@@ -25,5 +24,6 @@ C:\GitHub\tohow.webapi\tohow.Service\bin\Debug\tohow.Data.pdb
 C:\GitHub\tohow.webapi\tohow.Service\bin\Debug\tohow.Domain.pdb
 C:\GitHub\tohow.webapi\tohow.Service\bin\Debug\tohow.Interface.pdb
 C:\GitHub\tohow.webapi\tohow.Service\bin\Debug\EntityFramework.xml
+C:\GitHub\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.csprojResolveAssemblyReference.cache
 C:\GitHub\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.dll
 C:\GitHub\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.pdb
