@@ -94,3 +94,5 @@ C:\Git\tohow.webapi\tohow.API\bin\System.Web.Http.xml
 C:\Git\tohow.webapi\tohow.API\bin\System.Web.Http.WebHost.xml
 C:\Git\tohow.webapi\tohow.API\obj\Debug\tohow.API.dll
 C:\Git\tohow.webapi\tohow.API\obj\Debug\tohow.API.pdb
+C:\Git\tohow.webapi\tohow.API\bin\Swashbuckle.Core.dll
+C:\Git\tohow.webapi\tohow.API\bin\WebActivatorEx.dll

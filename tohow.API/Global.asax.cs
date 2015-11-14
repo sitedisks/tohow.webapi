@@ -12,6 +12,10 @@ namespace tohow.API
     {
         protected void Application_Start()
         {
+            var config = GlobalConfiguration.Configuration;
+            #if DEBUG
+            SwaggerConfig.Register(config);
+            #endif
             GlobalConfiguration.Configure(WebApiConfig.Register);
             Bootstrapper.Run();
         }

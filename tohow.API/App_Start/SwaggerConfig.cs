@@ -2,8 +2,9 @@ using System.Web.Http;
 using WebActivatorEx;
 using tohow.API;
 using Swashbuckle.Application;
+using System.Web;
+using System;
 
-[assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
 namespace tohow.API
 {
@@ -13,15 +14,15 @@ namespace tohow.API
         {
             var thisAssembly = typeof(SwaggerConfig).Assembly;
 
-            config 
-                .EnableSwagger(c =>
+            //GlobalConfiguration.Configuration 
+                config.EnableSwagger(c =>
                     {
                         // By default, the service root url is inferred from the request used to access the docs.
                         // However, there may be situations (e.g. proxy and load-balanced environments) where this does not
                         // resolve correctly. You can workaround this by providing your own code to determine the root URL.
                         //
                         //c.RootUrl(req => GetRootUrlFromAppConfig());
-
+                        c.RootUrl(req => new Uri(req.RequestUri, HttpContext.Current.Request.ApplicationPath ?? string.Empty).ToString());
                         // If schemes are not explicitly provided in a Swagger 2.0 document, then the scheme used to access
                         // the docs is taken as the default. If your API supports multiple schemes and you want to be explicit
                         // about them, you can use the "Schemes" option as shown below.
