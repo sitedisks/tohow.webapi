@@ -4,14 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace tohow.Domain.Database
 {
-    [Table("tbImage")]
-    public class tbImage
+    public class tbProfile
     {
         [Key]
-        public Guid Id { get; set; }
-        [Column("UploaderUserId")]
-        public long userId { get; set; }
+        public long Id { get; set; }
         public bool IsDeleted { get; set; }
-        public string Uri { get; set; }
+        public string UserId { get; set; }
     }
 }

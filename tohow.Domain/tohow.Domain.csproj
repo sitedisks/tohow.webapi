@@ -41,6 +41,7 @@
     <Folder Include="DTO\ViewModel\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\AspNetUsers.cs" />
     <Compile Include="Database\tbImage.cs" />
     <Compile Include="DTO\Image.cs" />
     <Compile Include="Extensions\DTOConverter.cs" />
