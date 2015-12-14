@@ -18,7 +18,7 @@ namespace tohow.Interface.DbContext
         ObjectContext BaseContext { get; }
 
         #region entities
-        DbSet<tohow.Domain.Database.tblImage> tblImages { get; set; }
+        DbSet<tohow.Domain.Database.tbImage> tblImages { get; set; }
         #endregion
     }
 }

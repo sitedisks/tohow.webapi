@@ -10,9 +10,9 @@ namespace tohow.Domain.Extensions
 {
     public static class DTOConverter
     {
-        public static tblImage ConvertToTblImage(this Image source, tblImage data = null) {
+        public static tbImage ConvertToTblImage(this Image source, tbImage data = null) {
             if (data == null)
-                data = new Database.tblImage();
+                data = new Database.tbImage();
 
             if (source == null)
                 return null;
@@ -25,7 +25,7 @@ namespace tohow.Domain.Extensions
             return data;
         }
 
-        public static Image ConverToImageDTO(this tblImage source, Image data = null) {
+        public static Image ConverToImageDTO(this tbImage source, Image data = null) {
             if (data == null)
                 data = new Image();
 

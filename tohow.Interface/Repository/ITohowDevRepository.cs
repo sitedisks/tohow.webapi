@@ -9,7 +9,7 @@ namespace tohow.Interface.Repository
 {
     public interface ITohowDevRepository: IDisposable
     {
-        Task<tblImage> GetImageByIdAsync(Guid imageId);
-        Task<IEnumerable<tblImage>> GetImagesByUserIdAsync(int userId);
+        Task<tbImage> GetImageByIdAsync(Guid imageId);
+        Task<IEnumerable<tbImage>> GetImagesByUserIdAsync(int userId);
     }
 }

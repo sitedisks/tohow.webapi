@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace tohow.Domain.Database
 {
     [Table("tbImage")]
-    public class tblImage
+    public class tbImage
     {
         [Key]
         public Guid Id { get; set; }

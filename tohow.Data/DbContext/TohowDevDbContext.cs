@@ -26,7 +26,7 @@ namespace tohow.Data.DbContext
         public TohowDevDbContext(string connectionString) : base(connectionString) { }
 
         #region entities
-        public DbSet<tohow.Domain.Database.tblImage> tblImages { get; set; }
+        public DbSet<tohow.Domain.Database.tbImage> tblImages { get; set; }
         #endregion
 
         public System.Data.Entity.Core.Objects.ObjectContext BaseContext

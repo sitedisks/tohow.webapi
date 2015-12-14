@@ -19,8 +19,8 @@ namespace tohow.Data.Repository
             _db = db;
         }
 
-        public async Task<tblImage> GetImageByIdAsync(Guid imageId) {
-            tblImage img = null;
+        public async Task<tbImage> GetImageByIdAsync(Guid imageId) {
+            tbImage img = null;
 
             try
             { 
@@ -36,9 +36,9 @@ namespace tohow.Data.Repository
             return img;
         }
 
-        public async Task<IEnumerable<tblImage>> GetImagesByUserIdAsync(int userId)
+        public async Task<IEnumerable<tbImage>> GetImagesByUserIdAsync(int userId)
         {
-            IList<tblImage> imgList = new List<tblImage>();
+            IList<tbImage> imgList = new List<tbImage>();
             try {
                 imgList = await _db.tblImages.Where(x => x.userId == userId && !x.IsDeleted).ToListAsync();
             }
