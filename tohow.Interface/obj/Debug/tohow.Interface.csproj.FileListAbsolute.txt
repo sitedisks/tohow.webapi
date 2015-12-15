@@ -34,3 +34,5 @@ C:\Git\tohow.webapi\tohow.Interface\bin\Debug\EntityFramework.SqlServer.xml
 C:\Git\tohow.webapi\tohow.Interface\obj\Debug\tohow.Interface.csprojResolveAssemblyReference.cache
 C:\Git\tohow.webapi\tohow.Interface\obj\Debug\tohow.Interface.dll
 C:\Git\tohow.webapi\tohow.Interface\obj\Debug\tohow.Interface.pdb
+C:\Git\tohow.webapi\tohow.Interface\bin\Debug\Newtonsoft.Json.dll
+C:\Git\tohow.webapi\tohow.Interface\bin\Debug\Newtonsoft.Json.xml

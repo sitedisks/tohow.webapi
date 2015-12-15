@@ -10,5 +10,6 @@ namespace tohow.Interface.Service
     public interface ITohowService
     {
         Task<Image> GetImageByImageId(Guid imageId);
+        Task<IList<Image>> GetImagesByUserId(int userId);
     }
 }

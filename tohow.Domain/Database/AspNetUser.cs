@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace tohow.Domain.Database
 {
     [Table("AspNetUsers")]
-    public class AspNetUsers
+    public class AspNetUser
     {
         [Key]
         public string Id { get; set; }

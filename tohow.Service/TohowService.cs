@@ -38,5 +38,27 @@ namespace tohow.Service
 
             return img;
         }
+
+        public async Task<IList<Image>> GetImagesByUserId(int userId) {
+            IList<Image> imgList = new List<Image>();
+
+            try
+            {
+                var ImgList = await _reposTohowDev.GetImagesByUserIdAsync(userId);
+
+                if (ImgList == null)
+                    throw new ApplicationException("Invalid User");
+
+                foreach (var item in ImgList) {
+                    imgList.Add(item.ConverToImageDTO());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error retriving Images", ex);
+            }
+
+            return imgList;
+        }
     }
 }

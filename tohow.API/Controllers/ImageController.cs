@@ -39,5 +39,26 @@ namespace tohow.API.Controllers
 
             return Ok(img);
         }
+
+        [Route("image/{userId}"), HttpGet]
+        public async Task<IHttpActionResult> GetImagesByUserId(int userId) {
+            IList<Image> imgList = new List<Image>();
+
+            try {
+                imgList = await _tohowSvc.GetImagesByUserId(userId);
+                if (imgList == null)
+                    return NotFound();
+            }
+            catch (ApplicationException aex)
+            {
+                return BadRequest(aex.Message);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return Ok(imgList);
+        }
     }
 }

@@ -19,6 +19,8 @@ namespace tohow.Interface.DbContext
 
         #region entities
         DbSet<tohow.Domain.Database.tbImage> tblImages { get; set; }
+        DbSet<tohow.Domain.Database.AspNetUser> AspNetUsers { get; set; }
+        DbSet<tohow.Domain.Database.tbProfile> tbProfiles { get; set; }
         #endregion
     }
 }

@@ -21,10 +21,8 @@ namespace tohow.Data.Repository
 
         public async Task<tbImage> GetImageByIdAsync(Guid imageId) {
             tbImage img = null;
-
             try
             { 
-                //tbImage
                 img = await _db.tblImages.FirstOrDefaultAsync(x => x.Id == imageId && !x.IsDeleted);
             }
             catch (DataException dex)
@@ -46,6 +44,19 @@ namespace tohow.Data.Repository
                 throw new ApplicationException("Data error!", dex);
             }
             return imgList;
+        }
+
+        public async Task<AspNetUser> GetAspNetUserByProfileId(int userId) {
+
+            AspNetUser user = null;
+
+            try { 
+                //
+            }
+            catch (DataException dex) {
+                throw new ApplicationException("Data error!", dex);
+            }
+            return user;
         }
 
         #region dispose
