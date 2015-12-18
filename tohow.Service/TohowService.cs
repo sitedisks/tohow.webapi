@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using tohow.Interface.Service;
-using tohow.Data.Repository;
 using tohow.Domain.DTO;
 using tohow.Interface.Repository;
 using tohow.Domain.Extensions;
+using tohow.Domain.DTO.ViewModel;
 
 namespace tohow.Service
 {
@@ -59,6 +57,15 @@ namespace tohow.Service
             }
 
             return imgList;
+        }
+
+        public async Task Register(RegisterPostRequest req) {
+
+            try { }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error register new user", ex);
+            }
         }
     }
 }

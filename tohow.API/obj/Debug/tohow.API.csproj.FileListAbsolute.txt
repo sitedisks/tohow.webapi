@@ -46,6 +46,9 @@ C:\GitHub\tohow.webapi\tohow.API\bin\System.Web.Http.WebHost.xml
 C:\GitHub\tohow.webapi\tohow.API\obj\Debug\tohow.API.csprojResolveAssemblyReference.cache
 C:\GitHub\tohow.webapi\tohow.API\obj\Debug\tohow.API.dll
 C:\GitHub\tohow.webapi\tohow.API\obj\Debug\tohow.API.pdb
+C:\GitHub\tohow.webapi\tohow.API\bin\Swashbuckle.Core.dll
+C:\GitHub\tohow.webapi\tohow.API\bin\WebActivatorEx.dll
+C:\Git\tohow.webapi\tohow.API\obj\Debug\tohow.API.csprojResolveAssemblyReference.cache
 C:\Git\tohow.webapi\tohow.API\bin\tohow.API.dll.config
 C:\Git\tohow.webapi\tohow.API\bin\tohow.API.dll
 C:\Git\tohow.webapi\tohow.API\bin\tohow.API.pdb
@@ -93,8 +96,5 @@ C:\Git\tohow.webapi\tohow.API\bin\System.Web.WebPages.Razor.xml
 C:\Git\tohow.webapi\tohow.API\bin\Newtonsoft.Json.xml
 C:\Git\tohow.webapi\tohow.API\bin\System.Net.Http.Formatting.xml
 C:\Git\tohow.webapi\tohow.API\bin\System.Web.Http.xml
-C:\Git\tohow.webapi\tohow.API\obj\Debug\tohow.API.csprojResolveAssemblyReference.cache
 C:\Git\tohow.webapi\tohow.API\obj\Debug\tohow.API.dll
 C:\Git\tohow.webapi\tohow.API\obj\Debug\tohow.API.pdb
-C:\GitHub\tohow.webapi\tohow.API\bin\Swashbuckle.Core.dll
-C:\GitHub\tohow.webapi\tohow.API\bin\WebActivatorEx.dll

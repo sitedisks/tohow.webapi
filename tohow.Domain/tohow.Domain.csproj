@@ -40,15 +40,14 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="Database\AspNetUser.cs" />
     <Compile Include="Database\tbImage.cs" />
     <Compile Include="Database\tbProfile.cs" />
     <Compile Include="DTO\Image.cs" />
     <Compile Include="DTO\UserProfile.cs" />
+    <Compile Include="DTO\ViewModel\UserAPI.cs" />
     <Compile Include="Extensions\DTOConverter.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using tohow.Domain.DTO;
+using tohow.Domain.DTO.ViewModel;
 
 namespace tohow.Interface.Service
 {
@@ -11,5 +10,6 @@ namespace tohow.Interface.Service
     {
         Task<Image> GetImageByImageId(Guid imageId);
         Task<IList<Image>> GetImagesByUserId(int userId);
+        //Task Reigster(RegisterPostRequest req);
     }
 }

@@ -8,7 +8,8 @@ namespace tohow.Domain.Database
     public class AspNetUser
     {
         [Key]
-        public string Id { get; set; }
+        [Column("Id")]
+        public string UserId { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public string UserName { get; set; }

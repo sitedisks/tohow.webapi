@@ -46,17 +46,54 @@ namespace tohow.Data.Repository
             return imgList;
         }
 
-        public async Task<AspNetUser> GetAspNetUserByProfileId(int userId) {
+        public async Task<AspNetUser> GetAspNetUserByProfileId(int profileId) {
 
             AspNetUser user = null;
 
-            try { 
-                //
+            try {
+                var profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.ProfileId == profileId && !x.IsDeleted);
+                user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == profile.UserId);
             }
             catch (DataException dex) {
                 throw new ApplicationException("Data error!", dex);
             }
             return user;
+        }
+
+        public async Task<tbProfile> GetUserProfileByProfileId(int profileId) {
+            tbProfile userProfile = null;
+            try {
+                userProfile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.ProfileId == profileId && !x.IsDeleted);
+            }
+            catch (DataException dex) {
+                throw new ApplicationException("Data error!", dex);
+            }
+            return userProfile;
+        }
+
+        public async Task<AspNetUser> GetAspNetUserByUserId(string userId) {
+            AspNetUser user = null;
+            try {
+                user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == userId);
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+            return user;
+        }
+
+        public async Task<tbProfile> GetUserProfileByUserId(string userId) {
+            tbProfile userProfile = null;
+            try {
+                var user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == userId);
+                userProfile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.UserId == user.UserId);
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+            return userProfile;
         }
 
         #region dispose
