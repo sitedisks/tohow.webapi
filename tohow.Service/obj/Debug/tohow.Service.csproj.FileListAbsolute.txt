@@ -42,3 +42,5 @@ C:\Git\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.dll
 C:\Git\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.pdb
 C:\Git\tohow.webapi\tohow.Service\bin\Debug\Newtonsoft.Json.dll
 C:\Git\tohow.webapi\tohow.Service\bin\Debug\Newtonsoft.Json.xml
+C:\GitHub\tohow.webapi\tohow.Service\bin\Debug\Newtonsoft.Json.dll
+C:\GitHub\tohow.webapi\tohow.Service\bin\Debug\Newtonsoft.Json.xml
