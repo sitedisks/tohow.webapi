@@ -10,8 +10,7 @@ namespace tohow.Domain.Database
         [Key]
         [Column("Id")]
         public long ProfileId { get; set; }
-        [ForeignKey("UserId")]
-        public AspNetUser AspNetUser { get; set; }
+        public string UserId { get; set; }
         [Column("DisplayName")]
         public string Email { get; set; }
         public string Gender { get; set; }
@@ -20,6 +19,9 @@ namespace tohow.Domain.Database
         public DateTime UpdatedDateTime { get; set; }
         public bool IsDeleted { get; set; }
         public int Points { get; set; }
+
+        [ForeignKey("UserId")]
+        public AspNetUser AspNetUser { get; set; }
 
     }
 }
