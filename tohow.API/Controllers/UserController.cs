@@ -32,7 +32,7 @@ namespace tohow.API.Controllers
             return Ok();
         }
 
-        [HttpGet, Route("userprofile")]
+        [HttpGet, Route("user")]
         public async Task<IHttpActionResult> GetUerProfileByUserId(string userId) {
             UserProfile userProfile = null;
 
@@ -43,6 +43,25 @@ namespace tohow.API.Controllers
                 return BadRequest(aex.Message);
             }
             catch (Exception ex) {
+                return InternalServerError(ex);
+            }
+
+            return Ok(userProfile);
+        }
+
+        [HttpGet, Route("profile")]
+        public async Task<IHttpActionResult> GetUserProfileByProfileId(int profileId) {
+            UserProfile userProfile = null;
+
+            try {
+                userProfile = await _tohowSvc.GetUserProfileByProfileId(profileId);
+            }
+            catch (ApplicationException aex)
+            {
+                return BadRequest(aex.Message);
+            }
+            catch (Exception ex)
+            {
                 return InternalServerError(ex);
             }
 

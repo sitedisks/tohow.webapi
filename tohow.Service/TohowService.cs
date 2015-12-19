@@ -78,12 +78,30 @@ namespace tohow.Service
 
                 userProfile = ConvertDBUserToUserProfile(profile, user);
             }
-            catch (Exception ex) { 
+            catch (Exception ex) 
+            { 
             }
 
             return userProfile;
         }
 
+        public async Task<UserProfile> GetUserProfileByProfileId(int profileId) {
+            UserProfile userPro = new UserProfile();
+
+            try {
+                var user = await _reposTohowDev.GetAspNetUserByProfileId(profileId);
+                var profile = await _reposTohowDev.GetTbProfileByProfileId(profileId);
+
+                userPro = ConvertDBUserToUserProfile(profile, user);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            return userPro;
+        }
+
+        #region private function
         private UserProfile ConvertDBUserToUserProfile(tbProfile tbProfile, AspNetUser aspUser)
         {
             UserProfile userProfile = new UserProfile();
@@ -101,5 +119,6 @@ namespace tohow.Service
 
             return userProfile;
         }
+        #endregion
     }
 }

@@ -14,5 +14,6 @@ namespace tohow.Interface.Service
         //Task Reigster(RegisterPostRequest req);
 
         Task<UserProfile> GetUserProfileByUserId(string userId);
+        Task<UserProfile> GetUserProfileByProfileId(int profileId);
     }
 }
