@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using tohow.Domain.DTO;
 using tohow.Domain.DTO.ViewModel;
 using tohow.Interface.Service;
 
@@ -29,6 +30,23 @@ namespace tohow.API.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpGet, Route("userprofile")]
+        public async Task<IHttpActionResult> GetUerProfileByUserId(string userId) {
+            UserProfile userProfile = null;
+
+            try {
+                userProfile = await _tohowSvc.GetUserProfileByUserId(userId);
+            }
+            catch (ApplicationException aex) {
+                return BadRequest(aex.Message);
+            }
+            catch (Exception ex) {
+                return InternalServerError(ex);
+            }
+
+            return Ok(userProfile);
         }
     }
 }

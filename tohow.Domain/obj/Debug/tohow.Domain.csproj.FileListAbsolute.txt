@@ -17,3 +17,6 @@ C:\Git\tohow.webapi\tohow.Domain\bin\Debug\Newtonsoft.Json.dll
 C:\Git\tohow.webapi\tohow.Domain\bin\Debug\Newtonsoft.Json.xml
 C:\Git\tohow.webapi\tohow.Domain\obj\Debug\tohow.Domain.dll
 C:\Git\tohow.webapi\tohow.Domain\obj\Debug\tohow.Domain.pdb
+C:\Git\tohow.webapi\tohow.Domain\bin\Debug\CryptSharp.dll
+C:\Git\tohow.webapi\tohow.Domain\bin\Debug\CryptSharp.pdb
+C:\Git\tohow.webapi\tohow.Domain\bin\Debug\CryptSharp.xml

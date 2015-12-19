@@ -19,6 +19,7 @@ namespace tohow.Data.DbContext
         public static TohowDevDbContext Create() {
             var db = new TohowDevDbContext();
             db.Configuration.LazyLoadingEnabled = false;
+            db.Configuration.ProxyCreationEnabled = false;
             return db;
         }
 

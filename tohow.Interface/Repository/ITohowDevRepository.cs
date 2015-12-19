@@ -17,8 +17,8 @@ namespace tohow.Interface.Repository
         #region user
         Task<AspNetUser> GetAspNetUserByProfileId(int profileId);
         Task<AspNetUser> GetAspNetUserByUserId(string userId);
-        Task<tbProfile> GetUserProfileByProfileId(int profileId);
-        Task<tbProfile> GetUserProfileByUserId(string userId);
+        Task<tbProfile> GetTbProfileByProfileId(int profileId);
+        Task<tbProfile> GetTbProfileByUserId(string userId);
         #endregion
     }
 }

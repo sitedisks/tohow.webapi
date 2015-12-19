@@ -98,3 +98,6 @@ C:\Git\tohow.webapi\tohow.API\bin\System.Net.Http.Formatting.xml
 C:\Git\tohow.webapi\tohow.API\bin\System.Web.Http.xml
 C:\Git\tohow.webapi\tohow.API\obj\Debug\tohow.API.dll
 C:\Git\tohow.webapi\tohow.API\obj\Debug\tohow.API.pdb
+C:\Git\tohow.webapi\tohow.API\bin\CryptSharp.dll
+C:\Git\tohow.webapi\tohow.API\bin\CryptSharp.pdb
+C:\Git\tohow.webapi\tohow.API\bin\CryptSharp.xml

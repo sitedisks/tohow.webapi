@@ -44,3 +44,6 @@ C:\Git\tohow.webapi\tohow.Service\bin\Debug\Newtonsoft.Json.xml
 C:\Git\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.csprojResolveAssemblyReference.cache
 C:\Git\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.dll
 C:\Git\tohow.webapi\tohow.Service\obj\Debug\tohow.Service.pdb
+C:\Git\tohow.webapi\tohow.Service\bin\Debug\CryptSharp.dll
+C:\Git\tohow.webapi\tohow.Service\bin\Debug\CryptSharp.pdb
+C:\Git\tohow.webapi\tohow.Service\bin\Debug\CryptSharp.xml

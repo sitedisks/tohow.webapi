@@ -14,9 +14,9 @@ namespace tohow.Domain.Database
         [Column("DisplayName")]
         public string Email { get; set; }
         public string Gender { get; set; }
-        public int Age { get; set; }
-        public DateTime CreatedDateTime { get; set; }
-        public DateTime UpdatedDateTime { get; set; }
+        public int? Age { get; set; }
+        public DateTime CreateDateTime { get; set; }
+        public DateTime? UpdatedDateTime { get; set; }
         public bool IsDeleted { get; set; }
         public int Points { get; set; }
 

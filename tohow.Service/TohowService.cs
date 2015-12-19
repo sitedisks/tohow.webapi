@@ -6,6 +6,7 @@ using tohow.Domain.DTO;
 using tohow.Interface.Repository;
 using tohow.Domain.Extensions;
 using tohow.Domain.DTO.ViewModel;
+using tohow.Domain.Database;
 
 namespace tohow.Service
 {
@@ -59,13 +60,46 @@ namespace tohow.Service
             return imgList;
         }
 
-        public async Task Register(RegisterPostRequest req) {
+        //public async Task Register(RegisterPostRequest req) {
 
-            try { }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("Error register new user", ex);
+        //    try { }
+        //    catch (Exception ex)
+        //    {
+        //        throw new ApplicationException("Error register new user", ex);
+        //    }
+        //}
+
+        public async Task<UserProfile> GetUserProfileByUserId(string userId) {
+            UserProfile userProfile = new UserProfile();
+
+            try {
+                var user = await _reposTohowDev.GetAspNetUserByUserId(userId);
+                var profile = await _reposTohowDev.GetTbProfileByUserId(userId);
+
+                userProfile = ConvertDBUserToUserProfile(profile, user);
             }
+            catch (Exception ex) { 
+            }
+
+            return userProfile;
+        }
+
+        private UserProfile ConvertDBUserToUserProfile(tbProfile tbProfile, AspNetUser aspUser)
+        {
+            UserProfile userProfile = new UserProfile();
+
+            userProfile.UserId = Guid.Parse(tbProfile.UserId);
+            userProfile.ProfileId = tbProfile.ProfileId;
+            userProfile.Email = tbProfile.Email;
+            userProfile.UserName = aspUser.UserName;
+            userProfile.Gender = tbProfile.Gender;
+            userProfile.Age = tbProfile.Age;
+            userProfile.CreatedTime = tbProfile.CreateDateTime;
+            userProfile.UpdatedTime = tbProfile.UpdatedDateTime;
+            userProfile.IsDeleted = tbProfile.IsDeleted;
+            userProfile.Credits = tbProfile.Points;
+
+            return userProfile;
         }
     }
 }

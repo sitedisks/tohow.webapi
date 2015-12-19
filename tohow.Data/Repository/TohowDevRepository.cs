@@ -60,15 +60,15 @@ namespace tohow.Data.Repository
             return user;
         }
 
-        public async Task<tbProfile> GetUserProfileByProfileId(int profileId) {
-            tbProfile userProfile = null;
+        public async Task<tbProfile> GetTbProfileByProfileId(int profileId) {
+            tbProfile profile = null;
             try {
-                userProfile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.ProfileId == profileId && !x.IsDeleted);
+                profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.ProfileId == profileId && !x.IsDeleted);
             }
             catch (DataException dex) {
                 throw new ApplicationException("Data error!", dex);
             }
-            return userProfile;
+            return profile;
         }
 
         public async Task<AspNetUser> GetAspNetUserByUserId(string userId) {
@@ -83,17 +83,17 @@ namespace tohow.Data.Repository
             return user;
         }
 
-        public async Task<tbProfile> GetUserProfileByUserId(string userId) {
-            tbProfile userProfile = null;
+        public async Task<tbProfile> GetTbProfileByUserId(string userId) {
+            tbProfile profile = null;
             try {
                 var user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == userId);
-                userProfile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.UserId == user.UserId);
+                profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.UserId == user.UserId);
             }
             catch (DataException dex)
             {
                 throw new ApplicationException("Data error!", dex);
             }
-            return userProfile;
+            return profile;
         }
 
         #region dispose

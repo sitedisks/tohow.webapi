@@ -10,6 +10,9 @@ namespace tohow.Interface.Service
     {
         Task<Image> GetImageByImageId(Guid imageId);
         Task<IList<Image>> GetImagesByUserId(int userId);
+
         //Task Reigster(RegisterPostRequest req);
+
+        Task<UserProfile> GetUserProfileByUserId(string userId);
     }
 }

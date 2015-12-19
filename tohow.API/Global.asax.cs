@@ -13,6 +13,10 @@ namespace tohow.API
         protected void Application_Start()
         {
             var config = GlobalConfiguration.Configuration;
+
+            //GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            //GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
+
             #if DEBUG
             SwaggerConfig.Register(config);
             #endif
