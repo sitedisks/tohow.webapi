@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using tohow.Domain.DTO;
-using tohow.Domain.DTO.ViewModel;
 
 namespace tohow.Interface.Service
 {
     public interface ITohowService
     {
+        #region image
         Task<Image> GetImageByImageId(Guid imageId);
         Task<IList<Image>> GetImagesByUserId(int userId);
+        #endregion
 
-        //Task Reigster(RegisterPostRequest req);
-
-        Task<UserProfile> GetUserProfileByUserId(string userId);
-        Task<UserProfile> GetUserProfileByProfileId(int profileId);
+        #region user
+        Task CreateNewUserProfile(UserProfile req);
+        Task<UserProfileDetails> GetUserProfileByUserId(string userId);
+        Task<UserProfileDetails> GetUserProfileByProfileId(int profileId);
+        Task<UserProfileDetails> GetUserProfileByEmail(string email);
+        #endregion
     }
 }

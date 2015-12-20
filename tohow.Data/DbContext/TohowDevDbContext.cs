@@ -23,7 +23,7 @@ namespace tohow.Data.DbContext
             return db;
         }
 
-        public TohowDevDbContext() : base("TohowDevDbAzureContext") { }
+        public TohowDevDbContext() : base("TohowDevDbWinhostContext") { }
         public TohowDevDbContext(string connectionString) : base(connectionString) { }
 
         #region entities

@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using tohow.Domain.DTO;
-using tohow.Domain.DTO.ViewModel;
 using tohow.Interface.Service;
 
 namespace tohow.API.Controllers
@@ -17,12 +16,17 @@ namespace tohow.API.Controllers
         }
 
         [HttpPost, Route("register")]
-        public async Task<IHttpActionResult> Register([FromBody] RegisterPostRequest req) {
+        public async Task<IHttpActionResult> Register([FromBody] UserProfile req)
+        {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             try {
+                var existUser = await _tohowSvc.GetUserProfileByEmail(req.Email);
+                if (existUser != null)
+                    throw new ApplicationException("User Exist.");
 
+                await _tohowSvc.CreateNewUserProfile(req);
             }
             catch (Exception ex)
             {
@@ -34,7 +38,7 @@ namespace tohow.API.Controllers
 
         [HttpGet, Route("user")]
         public async Task<IHttpActionResult> GetUerProfileByUserId(string userId) {
-            UserProfile userProfile = null;
+            UserProfileDetails userProfile = null;
 
             try {
                 userProfile = await _tohowSvc.GetUserProfileByUserId(userId);
@@ -51,7 +55,7 @@ namespace tohow.API.Controllers
 
         [HttpGet, Route("profile")]
         public async Task<IHttpActionResult> GetUserProfileByProfileId(int profileId) {
-            UserProfile userProfile = null;
+            UserProfileDetails userProfile = null;
 
             try {
                 userProfile = await _tohowSvc.GetUserProfileByProfileId(profileId);

@@ -46,8 +46,9 @@
     <Compile Include="Database\tbImage.cs" />
     <Compile Include="Database\tbProfile.cs" />
     <Compile Include="DTO\Image.cs" />
+    <Compile Include="DTO\UserProfileDetails.cs" />
     <Compile Include="DTO\UserProfile.cs" />
-    <Compile Include="DTO\ViewModel\UserAPI.cs" />
+    <Compile Include="Enum\Enum.cs" />
     <Compile Include="Extensions\DTOConverter.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,8 +5,9 @@ using tohow.Interface.Service;
 using tohow.Domain.DTO;
 using tohow.Interface.Repository;
 using tohow.Domain.Extensions;
-using tohow.Domain.DTO.ViewModel;
 using tohow.Domain.Database;
+using tohow.Domain.Enum;
+
 
 namespace tohow.Service
 {
@@ -17,7 +18,8 @@ namespace tohow.Service
         public TohowService(ITohowDevRepository repoTH) {
             _reposTohowDev = repoTH;
         }
-        // use the repos and implement the interface function
+
+        #region image
         public async Task<Image> GetImageByImageId(Guid imageId) {
 
             Image img = new Image();
@@ -59,18 +61,22 @@ namespace tohow.Service
 
             return imgList;
         }
+        #endregion
 
-        //public async Task Register(RegisterPostRequest req) {
+        #region user
+        public async Task CreateNewUserProfile(UserProfile req)
+        {
+            try {
+                await _reposTohowDev.CreateNewUser(req);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error register new user", ex);
+            }
+        }
 
-        //    try { }
-        //    catch (Exception ex)
-        //    {
-        //        throw new ApplicationException("Error register new user", ex);
-        //    }
-        //}
-
-        public async Task<UserProfile> GetUserProfileByUserId(string userId) {
-            UserProfile userProfile = new UserProfile();
+        public async Task<UserProfileDetails> GetUserProfileByUserId(string userId) {
+            UserProfileDetails userProfile = new UserProfileDetails();
 
             try {
                 var user = await _reposTohowDev.GetAspNetUserByUserId(userId);
@@ -79,14 +85,15 @@ namespace tohow.Service
                 userProfile = ConvertDBUserToUserProfile(profile, user);
             }
             catch (Exception ex) 
-            { 
+            {
+                throw new ApplicationException("Error retriving User Profile", ex);
             }
 
             return userProfile;
         }
 
-        public async Task<UserProfile> GetUserProfileByProfileId(int profileId) {
-            UserProfile userPro = new UserProfile();
+        public async Task<UserProfileDetails> GetUserProfileByProfileId(int profileId) {
+            UserProfileDetails userPro = new UserProfileDetails();
 
             try {
                 var user = await _reposTohowDev.GetAspNetUserByProfileId(profileId);
@@ -96,21 +103,42 @@ namespace tohow.Service
             }
             catch (Exception ex)
             {
+                throw new ApplicationException("Error retriving User Profile", ex);
             }
 
             return userPro;
         }
 
+        public async Task<UserProfileDetails> GetUserProfileByEmail(string email) {
+            UserProfileDetails userPro = new UserProfileDetails();
+
+            try {
+                var user = await _reposTohowDev.GetAspNetUserByEmail(email);
+                var profile = await _reposTohowDev.GetTbProfileByEmail(email);
+
+                if (user == null && profile == null)
+                    return null;
+
+                userPro = ConvertDBUserToUserProfile(profile, user);
+            }
+            catch (Exception ex) {
+                throw new ApplicationException("Error retriving User Profile", ex);            
+            }
+
+            return userPro;
+        }
+        #endregion
+
         #region private function
-        private UserProfile ConvertDBUserToUserProfile(tbProfile tbProfile, AspNetUser aspUser)
+        private UserProfileDetails ConvertDBUserToUserProfile(tbProfile tbProfile, AspNetUser aspUser)
         {
-            UserProfile userProfile = new UserProfile();
+            UserProfileDetails userProfile = new UserProfileDetails();
 
             userProfile.UserId = Guid.Parse(tbProfile.UserId);
             userProfile.ProfileId = tbProfile.ProfileId;
             userProfile.Email = tbProfile.Email;
             userProfile.UserName = aspUser.UserName;
-            userProfile.Gender = tbProfile.Gender;
+            userProfile.Sex = (Gender)Enum.Parse(typeof(Gender), tbProfile.Gender);
             userProfile.Age = tbProfile.Age;
             userProfile.CreatedTime = tbProfile.CreateDateTime;
             userProfile.UpdatedTime = tbProfile.UpdatedDateTime;

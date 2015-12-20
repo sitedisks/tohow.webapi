@@ -8,6 +8,8 @@ using tohow.Interface.DbContext;
 using tohow.Interface.Repository;
 using tohow.Domain.Database;
 using System.Data;
+using tohow.Domain.Extensions;
+using tohow.Domain.DTO;
 
 namespace tohow.Data.Repository
 {
@@ -19,6 +21,7 @@ namespace tohow.Data.Repository
             _db = db;
         }
 
+        #region image
         public async Task<tbImage> GetImageByIdAsync(Guid imageId) {
             tbImage img = null;
             try
@@ -44,6 +47,35 @@ namespace tohow.Data.Repository
                 throw new ApplicationException("Data error!", dex);
             }
             return imgList;
+        }
+        #endregion
+
+        #region user
+        public async Task<UserProfileDetails> CreateNewUser(UserProfile user)
+        {
+            UserProfileDetails userProfile = new UserProfileDetails();
+
+            try {
+                userProfile.UserId = Guid.NewGuid();
+                userProfile.Email = user.Email;
+                userProfile.Password = user.Password;
+                userProfile.CreatedTime = DateTime.UtcNow;
+                userProfile.IsDeleted = false;
+                userProfile.Credits = 0;
+
+                var profile = userProfile.ConvertToTbProfile();
+                var aspUser = userProfile.ConvertToAspNetUser();
+
+                _db.AspNetUsers.Add(aspUser);
+                _db.tbProfiles.Add(profile);
+                await _db.SaveChangesAsync();
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+
+            return userProfile;
         }
 
         public async Task<AspNetUser> GetAspNetUserByProfileId(int profileId) {
@@ -95,6 +127,33 @@ namespace tohow.Data.Repository
             }
             return profile;
         }
+
+        public async Task<AspNetUser> GetAspNetUserByEmail(string email) {
+            AspNetUser user = new AspNetUser();
+            try
+            {
+                user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.Email == email);
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+            return user;
+        }
+
+        public async Task<tbProfile> GetTbProfileByEmail(string email) {
+            tbProfile profile = null;
+            try
+            {
+                profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.Email == email && !x.IsDeleted); 
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+            return profile;
+        }
+        #endregion
 
         #region dispose
         public void Dispose()

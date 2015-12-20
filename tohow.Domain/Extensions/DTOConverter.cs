@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using tohow.Domain.Database;
+﻿using tohow.Domain.Database;
 using tohow.Domain.DTO;
 using CryptSharp;
+using tohow.Domain.Enum;
 
 namespace tohow.Domain.Extensions
 {
@@ -41,7 +37,7 @@ namespace tohow.Domain.Extensions
             return data;
         }
 
-        public static AspNetUser ConvertToAspNetUser(this UserProfile source, AspNetUser data = null) {
+        public static AspNetUser ConvertToAspNetUser(this UserProfileDetails source, AspNetUser data = null) {
             if (data == null)
                 data = new AspNetUser();
 
@@ -51,12 +47,12 @@ namespace tohow.Domain.Extensions
             data.UserId = source.UserId.ToString();
             data.Email = source.Email;
             data.PasswordHash = Crypter.Blowfish.Crypt(source.Password);
-            data.UserName = source.UserName;
+            data.UserName = source.UserName != null? source.UserName: source.Email;
 
             return data;
         }
 
-        public static tbProfile ConvertToTbProfile(this UserProfile source, tbProfile data = null) { 
+        public static tbProfile ConvertToTbProfile(this UserProfileDetails source, tbProfile data = null) { 
             if(data == null)
                 data = new tbProfile();
 
@@ -66,7 +62,7 @@ namespace tohow.Domain.Extensions
             data.ProfileId = source.ProfileId;
             data.UserId = source.UserId.ToString();
             data.Email = source.Email;
-            data.Gender = source.Gender;
+            data.Gender = source.Sex.ToString();
             data.Age = source.Age;
             data.CreateDateTime = source.CreatedTime;
             data.UpdatedDateTime = source.UpdatedTime;
