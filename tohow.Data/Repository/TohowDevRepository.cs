@@ -97,8 +97,8 @@ namespace tohow.Data.Repository
             tbProfile profile = null;
             try {
                 profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.ProfileId == profileId && !x.IsDeleted);
-                var user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == profile.UserId);
-                profile.AspNetUser = user;
+                if (profile != null)
+                    profile.AspNetUser = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == profile.UserId);
             }
             catch (DataException dex) {
                 throw new ApplicationException("Data error!", dex);
@@ -122,8 +122,8 @@ namespace tohow.Data.Repository
             tbProfile profile = null;
             try {
                 profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.UserId == userId);
-                var user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == userId);
-                profile.AspNetUser = user;
+                if(profile!=null)
+                    profile.AspNetUser = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == userId);
             }
             catch (DataException dex)
             {
@@ -150,8 +150,8 @@ namespace tohow.Data.Repository
             try
             {
                 profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.Email == email && !x.IsDeleted);
-                var user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.Email == email);
-                profile.AspNetUser = user;
+                if (profile != null)
+                    profile.AspNetUser = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.Email == email);
             }
             catch (DataException dex)
             {

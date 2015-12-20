@@ -76,30 +76,36 @@ namespace tohow.Service
         }
 
         public async Task<UserProfileDetails> GetUserProfileByUserId(string userId) {
-            UserProfileDetails userProfile = new UserProfileDetails();
+            UserProfileDetails userPro = new UserProfileDetails();
 
             try {
-                var user = await _reposTohowDev.GetAspNetUserByUserId(userId);
+                //var user = await _reposTohowDev.GetAspNetUserByUserId(userId);
                 var profile = await _reposTohowDev.GetTbProfileByUserId(userId);
 
-                userProfile = ConvertDBUserToUserProfile(profile, user);
+                if (profile != null)
+                    userPro = ConvertDBUserToUserProfile(profile);
+                else
+                    return null;
             }
             catch (Exception ex) 
             {
                 throw new ApplicationException("Error retriving User Profile", ex);
             }
 
-            return userProfile;
+            return userPro;
         }
 
         public async Task<UserProfileDetails> GetUserProfileByProfileId(int profileId) {
             UserProfileDetails userPro = new UserProfileDetails();
 
             try {
-                var user = await _reposTohowDev.GetAspNetUserByProfileId(profileId);
+                //var user = await _reposTohowDev.GetAspNetUserByProfileId(profileId);
                 var profile = await _reposTohowDev.GetTbProfileByProfileId(profileId);
 
-                userPro = ConvertDBUserToUserProfile(profile, user);
+                if (profile != null)
+                    userPro = ConvertDBUserToUserProfile(profile);
+                else
+                    return null;
             }
             catch (Exception ex)
             {
@@ -113,13 +119,13 @@ namespace tohow.Service
             UserProfileDetails userPro = new UserProfileDetails();
 
             try {
-                var user = await _reposTohowDev.GetAspNetUserByEmail(email);
+                //var user = await _reposTohowDev.GetAspNetUserByEmail(email);
                 var profile = await _reposTohowDev.GetTbProfileByEmail(email);
 
-                if (user == null && profile == null)
+                if (profile != null)
+                    userPro = ConvertDBUserToUserProfile(profile);
+                else
                     return null;
-
-                userPro = ConvertDBUserToUserProfile(profile, user);
             }
             catch (Exception ex) {
                 throw new ApplicationException("Error retriving User Profile", ex);            
@@ -130,14 +136,14 @@ namespace tohow.Service
         #endregion
 
         #region private function
-        private UserProfileDetails ConvertDBUserToUserProfile(tbProfile tbProfile, AspNetUser aspUser)
+        private UserProfileDetails ConvertDBUserToUserProfile(tbProfile tbProfile)
         {
             UserProfileDetails userProfile = new UserProfileDetails();
 
             userProfile.UserId = Guid.Parse(tbProfile.UserId);
             userProfile.ProfileId = tbProfile.ProfileId;
             userProfile.Email = tbProfile.Email;
-            userProfile.UserName = aspUser.UserName;
+            userProfile.UserName = tbProfile.AspNetUser.UserName;
             userProfile.Sex = (Gender)Enum.Parse(typeof(Gender), tbProfile.Gender);
             userProfile.Age = tbProfile.Age;
             userProfile.CreatedTime = tbProfile.CreateDateTime;
