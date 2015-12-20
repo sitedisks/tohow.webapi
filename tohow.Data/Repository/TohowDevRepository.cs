@@ -92,10 +92,13 @@ namespace tohow.Data.Repository
             return user;
         }
 
+        // tbProfile should be the only expo
         public async Task<tbProfile> GetTbProfileByProfileId(int profileId) {
             tbProfile profile = null;
             try {
                 profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.ProfileId == profileId && !x.IsDeleted);
+                var user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == profile.UserId);
+                profile.AspNetUser = user;
             }
             catch (DataException dex) {
                 throw new ApplicationException("Data error!", dex);
@@ -118,8 +121,9 @@ namespace tohow.Data.Repository
         public async Task<tbProfile> GetTbProfileByUserId(string userId) {
             tbProfile profile = null;
             try {
+                profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.UserId == userId);
                 var user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == userId);
-                profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.UserId == user.UserId);
+                profile.AspNetUser = user;
             }
             catch (DataException dex)
             {
@@ -145,7 +149,9 @@ namespace tohow.Data.Repository
             tbProfile profile = null;
             try
             {
-                profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.Email == email && !x.IsDeleted); 
+                profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.Email == email && !x.IsDeleted);
+                var user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.Email == email);
+                profile.AspNetUser = user;
             }
             catch (DataException dex)
             {
