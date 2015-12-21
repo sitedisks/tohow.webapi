@@ -5,8 +5,6 @@ using tohow.Interface.Service;
 using tohow.Domain.DTO;
 using tohow.Interface.Repository;
 using tohow.Domain.Extensions;
-using tohow.Domain.Database;
-using tohow.Domain.Enum;
 
 
 namespace tohow.Service

@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Threading.Tasks;
-using tohow.Domain;
 
 namespace tohow.Interface.DbContext
 {
