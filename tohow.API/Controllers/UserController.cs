@@ -37,6 +37,44 @@ namespace tohow.API.Controllers
             return Ok();
         }
 
+        [HttpPost, Route("login")]
+        public async Task<IHttpActionResult> Login([FromBody] UserProfile req)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            UserProfileDetails profile = null;
+
+            try
+            {
+                profile = await _tohowSvc.LoginUser(req);
+                if (profile == null)
+                    return NotFound();
+
+            }
+            catch (ApplicationException aex)
+            {
+                return BadRequest(aex.Message);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return Ok(profile);
+        }
+
+        [HttpPut, Route("userprofile/update")]
+        public async Task<IHttpActionResult> UpdateProfile([FromBody] UserProfileDetails req, [FromUri] int profileId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            // use for update the profile page
+
+            return Ok();
+        }
+
         [HttpGet, Route("userprofile/byuser")]
         public async Task<IHttpActionResult> GetUerProfileByUserId(string userId)
         {

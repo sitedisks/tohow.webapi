@@ -1,4 +1,5 @@
 ﻿using System;
+using CryptSharp;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using tohow.Interface.Service;
@@ -77,6 +78,29 @@ namespace tohow.Service
             {
                 throw new ApplicationException("Error register new user", ex);
             }
+        }
+
+        public async Task<UserProfileDetails> LoginUser(UserProfile req)
+        {
+            UserProfileDetails userPro = null;
+
+            try
+            {
+                var profile = await _reposTohowDev.GetTbProfileByEmail(req.Email);
+                if (profile != null)
+                {
+                    if (Crypter.CheckPassword(req.Password, profile.AspNetUser.PasswordHash))
+                    {
+                        userPro = profile.ConvertToUserProfile();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error login user", ex);
+            }
+
+            return userPro;
         }
 
         public async Task<UserProfileDetails> GetUserProfileByUserId(string userId)
