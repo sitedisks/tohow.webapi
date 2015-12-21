@@ -64,9 +64,7 @@ namespace tohow.Data.Repository
                 userProfile.Credits = 0;
 
                 var profile = userProfile.ConvertToTbProfile();
-                var aspUser = userProfile.ConvertToAspNetUser();
-
-                _db.AspNetUsers.Add(aspUser);
+            
                 _db.tbProfiles.Add(profile);
                 await _db.SaveChangesAsync();
             }

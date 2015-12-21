@@ -39,22 +39,6 @@ namespace tohow.Domain.Extensions
             return data;
         }
 
-        public static AspNetUser ConvertToAspNetUser(this UserProfileDetails source, AspNetUser data = null)
-        {
-            if (data == null)
-                data = new AspNetUser();
-
-            if (source == null)
-                return null;
-
-            data.UserId = source.UserId.ToString();
-            data.Email = source.Email;
-            data.PasswordHash = Crypter.Blowfish.Crypt(source.Password);
-            data.UserName = source.UserName != null ? source.UserName : source.Email;
-
-            return data;
-        }
-
         public static tbProfile ConvertToTbProfile(this UserProfileDetails source, tbProfile data = null)
         {
             if (data == null)
@@ -64,7 +48,11 @@ namespace tohow.Domain.Extensions
                 return null;
 
             data.ProfileId = source.ProfileId;
-            data.UserId = source.UserId.ToString();
+            data.AspNetUser = new AspNetUser();
+            data.AspNetUser.UserId = source.UserId.ToString();
+            data.AspNetUser.Email = source.Email;
+            data.AspNetUser.PasswordHash = Crypter.Blowfish.Crypt(source.Password);
+            data.AspNetUser.UserName = source.UserName != null ? source.UserName : source.Email;
             data.Email = source.Email;
             data.Gender = source.Sex.ToString();
             data.Age = source.Age;
