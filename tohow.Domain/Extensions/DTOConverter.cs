@@ -87,5 +87,20 @@ namespace tohow.Domain.Extensions
         }
 
         // Session converter
+        public static tbSession ConverToTbSession(this Session source, tbSession data = null)
+        {
+            if (data == null)
+                data = new Database.tbSession();
+
+            if (source == null)
+                return null;
+
+            data.Id = source.SessionId;
+            data.ProfileId = source.ProfileId;
+            data.Expiry = source.Expiry;
+            data.IPAddress = source.IPAddress;
+
+            return data;
+        }
     }
 }
