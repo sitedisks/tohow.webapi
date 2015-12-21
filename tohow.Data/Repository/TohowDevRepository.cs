@@ -78,21 +78,6 @@ namespace tohow.Data.Repository
             return userProfile;
         }
 
-        public async Task<AspNetUser> GetAspNetUserByProfileId(int profileId) {
-
-            AspNetUser user = null;
-
-            try {
-                var profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.ProfileId == profileId && !x.IsDeleted);
-                user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == profile.UserId);
-            }
-            catch (DataException dex) {
-                throw new ApplicationException("Data error!", dex);
-            }
-            return user;
-        }
-
-        // tbProfile should be the only expo
         public async Task<tbProfile> GetTbProfileByProfileId(int profileId) {
             tbProfile profile = null;
             try {
@@ -104,18 +89,6 @@ namespace tohow.Data.Repository
                 throw new ApplicationException("Data error!", dex);
             }
             return profile;
-        }
-
-        public async Task<AspNetUser> GetAspNetUserByUserId(string userId) {
-            AspNetUser user = null;
-            try {
-                user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == userId);
-            }
-            catch (DataException dex)
-            {
-                throw new ApplicationException("Data error!", dex);
-            }
-            return user;
         }
 
         public async Task<tbProfile> GetTbProfileByUserId(string userId) {
@@ -130,19 +103,6 @@ namespace tohow.Data.Repository
                 throw new ApplicationException("Data error!", dex);
             }
             return profile;
-        }
-
-        public async Task<AspNetUser> GetAspNetUserByEmail(string email) {
-            AspNetUser user = new AspNetUser();
-            try
-            {
-                user = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.Email == email);
-            }
-            catch (DataException dex)
-            {
-                throw new ApplicationException("Data error!", dex);
-            }
-            return user;
         }
 
         public async Task<tbProfile> GetTbProfileByEmail(string email) {

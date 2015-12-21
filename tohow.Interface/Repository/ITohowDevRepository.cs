@@ -18,11 +18,8 @@ namespace tohow.Interface.Repository
         #region user
         Task<UserProfileDetails> CreateNewUser(UserProfile user);
   
-        Task<AspNetUser> GetAspNetUserByProfileId(int profileId);
-        Task<AspNetUser> GetAspNetUserByUserId(string userId);
         Task<tbProfile> GetTbProfileByProfileId(int profileId);
         Task<tbProfile> GetTbProfileByUserId(string userId);
-        Task<AspNetUser> GetAspNetUserByEmail(string email);
         Task<tbProfile> GetTbProfileByEmail(string email);
         #endregion
     }

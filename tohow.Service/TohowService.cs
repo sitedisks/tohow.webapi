@@ -79,11 +79,10 @@ namespace tohow.Service
             UserProfileDetails userPro = new UserProfileDetails();
 
             try {
-                //var user = await _reposTohowDev.GetAspNetUserByUserId(userId);
                 var profile = await _reposTohowDev.GetTbProfileByUserId(userId);
 
                 if (profile != null)
-                    userPro = ConvertDBUserToUserProfile(profile);
+                    userPro = profile.ConvertToUserProfile();
                 else
                     return null;
             }
@@ -99,11 +98,10 @@ namespace tohow.Service
             UserProfileDetails userPro = new UserProfileDetails();
 
             try {
-                //var user = await _reposTohowDev.GetAspNetUserByProfileId(profileId);
                 var profile = await _reposTohowDev.GetTbProfileByProfileId(profileId);
 
                 if (profile != null)
-                    userPro = ConvertDBUserToUserProfile(profile);
+                    userPro = profile.ConvertToUserProfile();
                 else
                     return null;
             }
@@ -119,11 +117,10 @@ namespace tohow.Service
             UserProfileDetails userPro = new UserProfileDetails();
 
             try {
-                //var user = await _reposTohowDev.GetAspNetUserByEmail(email);
                 var profile = await _reposTohowDev.GetTbProfileByEmail(email);
 
                 if (profile != null)
-                    userPro = ConvertDBUserToUserProfile(profile);
+                    userPro = profile.ConvertToUserProfile();
                 else
                     return null;
             }
@@ -132,26 +129,6 @@ namespace tohow.Service
             }
 
             return userPro;
-        }
-        #endregion
-
-        #region private function
-        private UserProfileDetails ConvertDBUserToUserProfile(tbProfile tbProfile)
-        {
-            UserProfileDetails userProfile = new UserProfileDetails();
-
-            userProfile.UserId = Guid.Parse(tbProfile.UserId);
-            userProfile.ProfileId = tbProfile.ProfileId;
-            userProfile.Email = tbProfile.Email;
-            userProfile.UserName = tbProfile.AspNetUser.UserName;
-            userProfile.Sex = (Gender)Enum.Parse(typeof(Gender), tbProfile.Gender);
-            userProfile.Age = tbProfile.Age;
-            userProfile.CreatedTime = tbProfile.CreateDateTime;
-            userProfile.UpdatedTime = tbProfile.UpdatedDateTime;
-            userProfile.IsDeleted = tbProfile.IsDeleted;
-            userProfile.Credits = tbProfile.Points;
-
-            return userProfile;
         }
         #endregion
     }
