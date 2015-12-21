@@ -11,28 +11,31 @@ using tohow.Domain.Enum;
 
 namespace tohow.Service
 {
-    public class TohowService: ITohowService
+    public class TohowService : ITohowService
     {
         private readonly ITohowDevRepository _reposTohowDev;
 
-        public TohowService(ITohowDevRepository repoTH) {
+        public TohowService(ITohowDevRepository repoTH)
+        {
             _reposTohowDev = repoTH;
         }
 
         #region image
-        public async Task<Image> GetImageByImageId(Guid imageId) {
+        public async Task<Image> GetImageByImageId(Guid imageId)
+        {
 
             Image img = new Image();
 
-            try {
+            try
+            {
                 var tblImg = await _reposTohowDev.GetImageByIdAsync(imageId);
 
                 if (tblImg == null)
                     throw new ApplicationException("Invalid Image");
 
-                img = tblImg.ConverToImageDTO(); 
+                img = tblImg.ConverToImageDTO();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new ApplicationException("Error retriving Image", ex);
             }
@@ -40,7 +43,8 @@ namespace tohow.Service
             return img;
         }
 
-        public async Task<IList<Image>> GetImagesByUserId(int userId) {
+        public async Task<IList<Image>> GetImagesByUserId(int userId)
+        {
             IList<Image> imgList = new List<Image>();
 
             try
@@ -50,7 +54,8 @@ namespace tohow.Service
                 if (ImgList == null)
                     throw new ApplicationException("Invalid User");
 
-                foreach (var item in ImgList) {
+                foreach (var item in ImgList)
+                {
                     imgList.Add(item.ConverToImageDTO());
                 }
             }
@@ -66,7 +71,8 @@ namespace tohow.Service
         #region user
         public async Task CreateNewUserProfile(UserProfile req)
         {
-            try {
+            try
+            {
                 await _reposTohowDev.CreateNewUser(req);
             }
             catch (Exception ex)
@@ -75,10 +81,12 @@ namespace tohow.Service
             }
         }
 
-        public async Task<UserProfileDetails> GetUserProfileByUserId(string userId) {
+        public async Task<UserProfileDetails> GetUserProfileByUserId(string userId)
+        {
             UserProfileDetails userPro = new UserProfileDetails();
 
-            try {
+            try
+            {
                 var profile = await _reposTohowDev.GetTbProfileByUserId(userId);
 
                 if (profile != null)
@@ -86,7 +94,7 @@ namespace tohow.Service
                 else
                     return null;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 throw new ApplicationException("Error retriving User Profile", ex);
             }
@@ -94,10 +102,12 @@ namespace tohow.Service
             return userPro;
         }
 
-        public async Task<UserProfileDetails> GetUserProfileByProfileId(int profileId) {
+        public async Task<UserProfileDetails> GetUserProfileByProfileId(int profileId)
+        {
             UserProfileDetails userPro = new UserProfileDetails();
 
-            try {
+            try
+            {
                 var profile = await _reposTohowDev.GetTbProfileByProfileId(profileId);
 
                 if (profile != null)
@@ -113,10 +123,12 @@ namespace tohow.Service
             return userPro;
         }
 
-        public async Task<UserProfileDetails> GetUserProfileByEmail(string email) {
+        public async Task<UserProfileDetails> GetUserProfileByEmail(string email)
+        {
             UserProfileDetails userPro = new UserProfileDetails();
 
-            try {
+            try
+            {
                 var profile = await _reposTohowDev.GetTbProfileByEmail(email);
 
                 if (profile != null)
@@ -124,8 +136,9 @@ namespace tohow.Service
                 else
                     return null;
             }
-            catch (Exception ex) {
-                throw new ApplicationException("Error retriving User Profile", ex);            
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error retriving User Profile", ex);
             }
 
             return userPro;
