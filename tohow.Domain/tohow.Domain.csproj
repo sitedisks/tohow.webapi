@@ -45,7 +45,9 @@
     <Compile Include="Database\AspNetUser.cs" />
     <Compile Include="Database\tbImage.cs" />
     <Compile Include="Database\tbProfile.cs" />
+    <Compile Include="Database\tbSession.cs" />
     <Compile Include="DTO\Image.cs" />
+    <Compile Include="DTO\Session.cs" />
     <Compile Include="DTO\UserProfileDetails.cs" />
     <Compile Include="DTO\UserProfile.cs" />
     <Compile Include="Enum\Enum.cs" />

@@ -85,5 +85,7 @@ namespace tohow.Domain.Extensions
 
             return data;
         }
+
+        // Session converter
     }
 }

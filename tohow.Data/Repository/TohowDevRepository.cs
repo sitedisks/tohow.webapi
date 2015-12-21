@@ -75,6 +75,17 @@ namespace tohow.Data.Repository
             return userProfile;
         }
 
+        public async Task<tbSession> CreateNewSession(Session session) {
+            tbSession ses = new tbSession();
+
+            try { }
+            catch (DataException dex)
+            { 
+            }
+
+            return ses;
+        }
+
         public async Task<tbProfile> GetTbProfileByProfileId(int profileId) {
             tbProfile profile = null;
             try {

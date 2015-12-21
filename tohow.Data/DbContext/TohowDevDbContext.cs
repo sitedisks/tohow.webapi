@@ -13,8 +13,8 @@ namespace tohow.Data.DbContext
         // db initial create
         public static TohowDevDbContext Create() {
             var db = new TohowDevDbContext();
-            db.Configuration.LazyLoadingEnabled = false;
-            db.Configuration.ProxyCreationEnabled = false;
+            //db.Configuration.LazyLoadingEnabled = true;
+            //db.Configuration.ProxyCreationEnabled = false;
             return db;
         }
 
@@ -25,6 +25,7 @@ namespace tohow.Data.DbContext
         public DbSet<tohow.Domain.Database.tbImage> tblImages { get; set; }
         public DbSet<tohow.Domain.Database.AspNetUser> AspNetUsers { get; set; }
         public DbSet<tohow.Domain.Database.tbProfile> tbProfiles { get; set; }
+        public DbSet<tohow.Domain.Database.tbSession> tbSessions { get; set; }
         #endregion
 
         public System.Data.Entity.Core.Objects.ObjectContext BaseContext
