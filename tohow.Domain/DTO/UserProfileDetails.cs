@@ -9,7 +9,7 @@ namespace tohow.Domain.DTO
         public long ProfileId { get; set; }
         public Gender Sex { get; set; }
         public string UserName { get; set; }
-        public int? Age { get; set; }
+        public Nullable<int> Age { get; set; }
         public DateTime CreatedTime { get; set; }
         public DateTime? UpdatedTime { get; set; }
         public bool IsDeleted { get; set; }
