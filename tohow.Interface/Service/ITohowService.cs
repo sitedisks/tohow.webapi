@@ -13,7 +13,7 @@ namespace tohow.Interface.Service
         #endregion
 
         #region user
-        Task CreateNewUserProfile(UserProfile req);
+        Task<UserProfileDetails> CreateNewUserProfile(UserProfile req);
         Task<UserProfileDetails> LoginUser(UserProfile req, string IPAddress);
         Task<UserProfileDetails> GetUserProfileByUserId(string userId);
         Task<UserProfileDetails> GetUserProfileByProfileId(int profileId);

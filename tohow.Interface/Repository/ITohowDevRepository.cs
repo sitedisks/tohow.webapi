@@ -15,10 +15,9 @@ namespace tohow.Interface.Repository
 
         #region user
         Task<tbProfile> CreateNewUser(UserProfile user);
-
         Task CreateNewSession(UserProfileDetails userPro, string IPAddress);
         Task<tbSession> GetSessionByProfileId(long profileId);
-        Task DeleteSessionByProfileId(tbSession theSession);
+        Task DeleteSession(tbSession theSession);
         Task<tbProfile> GetTbProfileByProfileId(int profileId);
         Task<tbProfile> GetTbProfileByUserId(string userId);
         Task<tbProfile> GetTbProfileByEmail(string email);

@@ -68,16 +68,21 @@ namespace tohow.Service
         #endregion
 
         #region user
-        public async Task CreateNewUserProfile(UserProfile req)
+        public async Task<UserProfileDetails> CreateNewUserProfile(UserProfile req)
         {
+            UserProfileDetails userPro = new UserProfileDetails();
+
             try
             {
-                await _reposTohowDev.CreateNewUser(req);
+                var user = await _reposTohowDev.CreateNewUser(req);
+                userPro = user.ConvertToUserProfile();
             }
             catch (Exception ex)
             {
                 throw new ApplicationException("Error register new user", ex);
             }
+
+            return userPro;
         }
 
         public async Task<UserProfileDetails> LoginUser(UserProfile req, string IPAddress)
@@ -95,7 +100,7 @@ namespace tohow.Service
                         var session = await _reposTohowDev.GetSessionByProfileId(userPro.ProfileId);
                         if (session != null)
                         {
-                            await _reposTohowDev.DeleteSessionByProfileId(session); //delete the previous session
+                            await _reposTohowDev.DeleteSession(session); //delete the previous session
                         }
 
                         await _reposTohowDev.CreateNewSession(userPro, IPAddress);

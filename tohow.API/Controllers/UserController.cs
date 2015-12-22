@@ -24,20 +24,22 @@ namespace tohow.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            UserProfileDetails userPro = null;
+
             try
             {
                 var existUser = await _tohowSvc.GetUserProfileByEmail(req.Email);
                 if (existUser != null)
                     throw new ApplicationException("User Exist.");
 
-                await _tohowSvc.CreateNewUserProfile(req);
+                userPro = await _tohowSvc.CreateNewUserProfile(req);
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
 
-            return Ok();
+            return Ok(userPro);
         }
 
         [HttpPost, Route("login")]
@@ -46,12 +48,12 @@ namespace tohow.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            UserProfileDetails profile = null;
+            UserProfileDetails userPro = null;
 
             try
             {
-                profile = await _tohowSvc.LoginUser(req, GetClientIp());
-                if (profile == null)
+                userPro = await _tohowSvc.LoginUser(req, GetClientIp());
+                if (userPro == null)
                     return NotFound();
             }
             catch (ApplicationException aex)
@@ -63,7 +65,7 @@ namespace tohow.API.Controllers
                 return InternalServerError(ex);
             }
 
-            return Ok(profile);
+            return Ok(userPro);
         }
 
         [HttpPut, Route("userprofile/update")]

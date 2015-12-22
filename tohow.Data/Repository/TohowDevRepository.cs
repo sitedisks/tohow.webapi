@@ -117,7 +117,7 @@ namespace tohow.Data.Repository
             return ses;
         }
 
-        public async Task DeleteSessionByProfileId(tbSession theSession)
+        public async Task DeleteSession(tbSession theSession)
         {
             try
             {
