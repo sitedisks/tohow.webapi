@@ -14,10 +14,13 @@ namespace tohow.Interface.Repository
         #endregion
 
         #region user
-        Task<tbProfile> CreateNewUser(UserProfile user);
-        Task CreateNewSession(UserProfileDetails userPro, string IPAddress);
+        tbSession GetSessionById(Guid sessionId);
         Task<tbSession> GetSessionByProfileId(long profileId);
-        Task DeleteSession(tbSession theSession);
+        Task CreateNewSession(UserProfileDetails userPro, string IPAddress);
+        void DeleteSession(tbSession theSession);
+        void UpdateSession(tbSession theSession);
+        Task DeleteSessionAsync(tbSession theSession);
+        Task<tbProfile> CreateNewUser(UserProfile user);
         Task<tbProfile> GetTbProfileByProfileId(int profileId);
         Task<tbProfile> GetTbProfileByUserId(string userId);
         Task<tbProfile> GetTbProfileByEmail(string email);

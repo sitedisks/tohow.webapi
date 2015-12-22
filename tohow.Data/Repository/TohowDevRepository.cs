@@ -54,6 +54,22 @@ namespace tohow.Data.Repository
         #endregion
 
         #region user
+        public tbSession GetSessionById(Guid sessionId)
+        {
+            tbSession session = null;
+
+            try
+            {
+                session = _db.tbSessions.FirstOrDefault(x => x.Id == sessionId && !x.IsDeleted);
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+
+            return session;
+        }
+
         public async Task<tbProfile> CreateNewUser(UserProfile user)
         {
             tbProfile profile = new tbProfile();
@@ -88,7 +104,7 @@ namespace tohow.Data.Repository
                 tbSession ses = new tbSession();
                 ses.Id = Guid.NewGuid();
                 ses.CreateDateTime = DateTime.UtcNow;
-                ses.Expiry = DateTime.UtcNow.AddMonths(1);
+                ses.Expiry = DateTime.UtcNow.AddDays(1);
                 ses.ProfileId = userPro.ProfileId;
                 ses.IPAddress = IPAddress;
 
@@ -117,7 +133,33 @@ namespace tohow.Data.Repository
             return ses;
         }
 
-        public async Task DeleteSession(tbSession theSession)
+        public void DeleteSession(tbSession theSession)
+        {
+            try
+            {
+                theSession.UpdateDateTime = DateTime.UtcNow;
+                theSession.IsDeleted = true;
+                _db.SaveChanges();
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+        }
+
+        public void UpdateSession(tbSession theSession) {
+            try {
+                theSession.Expiry.AddDays(1);
+                theSession.UpdateDateTime = DateTime.UtcNow;
+                _db.SaveChanges();
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+        }
+
+        public async Task DeleteSessionAsync(tbSession theSession)
         {
             try
             {

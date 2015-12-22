@@ -13,6 +13,9 @@ namespace tohow.Interface.Service
         #endregion
 
         #region user
+        Session GetSessionById(Guid sessionId);
+        void DeleteSession(Session session);
+        void UpdateSessionByOneDay(Session session);
         Task<UserProfileDetails> CreateNewUserProfile(UserProfile req);
         Task<UserProfileDetails> LoginUser(UserProfile req, string IPAddress);
         Task<UserProfileDetails> GetUserProfileByUserId(string userId);

@@ -68,6 +68,40 @@ namespace tohow.Service
         #endregion
 
         #region user
+        public Session GetSessionById(Guid sessionId) {
+            Session session = null;
+
+            try {
+                var tbsession = _reposTohowDev.GetSessionById(sessionId);
+                session = tbsession.ConverToSessionDTO();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error retrieve user session", ex);
+            }
+            return session;
+        }
+
+        public void DeleteSession(Session session) {
+            try {
+                _reposTohowDev.DeleteSession(session.ConverToTbSession());
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error delete user session", ex);
+            }
+        }
+
+        public void UpdateSessionByOneDay(Session session) {
+            try {
+                _reposTohowDev.UpdateSession(session.ConverToTbSession());
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error update user session", ex);
+            }
+        }
+
         public async Task<UserProfileDetails> CreateNewUserProfile(UserProfile req)
         {
             UserProfileDetails userPro = new UserProfileDetails();
@@ -100,7 +134,7 @@ namespace tohow.Service
                         var session = await _reposTohowDev.GetSessionByProfileId(userPro.ProfileId);
                         if (session != null)
                         {
-                            await _reposTohowDev.DeleteSession(session); //delete the previous session
+                            await _reposTohowDev.DeleteSessionAsync(session); //delete the previous session
                         }
 
                         await _reposTohowDev.CreateNewSession(userPro, IPAddress);
