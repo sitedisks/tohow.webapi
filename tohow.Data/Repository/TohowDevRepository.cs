@@ -12,19 +12,21 @@ using tohow.Domain.DTO;
 
 namespace tohow.Data.Repository
 {
-    public class TohowDevRepository: ITohowDevRepository
+    public class TohowDevRepository : ITohowDevRepository
     {
         private readonly ITohowDevDbContext _db;
 
-        public TohowDevRepository(ITohowDevDbContext db) {
+        public TohowDevRepository(ITohowDevDbContext db)
+        {
             _db = db;
         }
 
         #region image
-        public async Task<tbImage> GetImageByIdAsync(Guid imageId) {
+        public async Task<tbImage> GetImageByIdAsync(Guid imageId)
+        {
             tbImage img = null;
             try
-            { 
+            {
                 img = await _db.tblImages.FirstOrDefaultAsync(x => x.Id == imageId && !x.IsDeleted);
             }
             catch (DataException dex)
@@ -39,10 +41,12 @@ namespace tohow.Data.Repository
         public async Task<IEnumerable<tbImage>> GetImagesByUserIdAsync(int userId)
         {
             IList<tbImage> imgList = new List<tbImage>();
-            try {
+            try
+            {
                 imgList = await _db.tblImages.Where(x => x.userId == userId && !x.IsDeleted).ToListAsync();
             }
-            catch (DataException dex) {
+            catch (DataException dex)
+            {
                 throw new ApplicationException("Data error!", dex);
             }
             return imgList;
@@ -50,11 +54,13 @@ namespace tohow.Data.Repository
         #endregion
 
         #region user
-        public async Task<UserProfileDetails> CreateNewUser(UserProfile user)
+        public async Task<tbProfile> CreateNewUser(UserProfile user)
         {
-            UserProfileDetails userProfile = new UserProfileDetails();
+            tbProfile profile = new tbProfile();
 
-            try {
+            try
+            {
+                UserProfileDetails userProfile = new UserProfileDetails();
                 userProfile.UserId = Guid.NewGuid();
                 userProfile.Email = user.Email;
                 userProfile.Password = user.Password;
@@ -62,8 +68,8 @@ namespace tohow.Data.Repository
                 userProfile.IsDeleted = false;
                 userProfile.Credits = 0;
 
-                var profile = userProfile.ConvertToTbProfile();
-            
+                profile = userProfile.ConvertToTbProfile();
+
                 _db.tbProfiles.Add(profile);
                 await _db.SaveChangesAsync();
             }
@@ -72,38 +78,82 @@ namespace tohow.Data.Repository
                 throw new ApplicationException("Data error!", dex);
             }
 
-            return userProfile;
+            return profile;
         }
 
-        public async Task<tbSession> CreateNewSession(Session session) {
-            tbSession ses = new tbSession();
+        public async Task CreateNewSession(UserProfileDetails userPro, string IPAddress)
+        {
+            try
+            {
+                tbSession ses = new tbSession();
+                ses.Id = Guid.NewGuid();
+                ses.CreateDateTime = DateTime.UtcNow;
+                ses.Expiry = DateTime.UtcNow.AddMonths(1);
+                ses.ProfileId = userPro.ProfileId;
+                ses.IPAddress = IPAddress;
 
-            try { }
+                _db.tbSessions.Add(ses);
+                await _db.SaveChangesAsync();
+            }
             catch (DataException dex)
-            { 
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+        }
+
+        public async Task<tbSession> GetSessionByProfileId(long profileId)
+        {
+            tbSession ses = null;
+
+            try
+            {
+                ses = await _db.tbSessions.FirstOrDefaultAsync(x => x.ProfileId == profileId && !x.IsDeleted);
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
             }
 
             return ses;
         }
 
-        public async Task<tbProfile> GetTbProfileByProfileId(int profileId) {
+        public async Task DeleteSessionByProfileId(tbSession theSession)
+        {
+            try
+            {
+                theSession.UpdateDateTime = DateTime.UtcNow;
+                theSession.IsDeleted = true;
+                await _db.SaveChangesAsync();
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+        }
+
+        public async Task<tbProfile> GetTbProfileByProfileId(int profileId)
+        {
             tbProfile profile = null;
-            try {
+            try
+            {
                 profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.ProfileId == profileId && !x.IsDeleted);
                 if (profile != null)
                     profile.AspNetUser = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == profile.UserId);
             }
-            catch (DataException dex) {
+            catch (DataException dex)
+            {
                 throw new ApplicationException("Data error!", dex);
             }
             return profile;
         }
 
-        public async Task<tbProfile> GetTbProfileByUserId(string userId) {
+        public async Task<tbProfile> GetTbProfileByUserId(string userId)
+        {
             tbProfile profile = null;
-            try {
+            try
+            {
                 profile = await _db.tbProfiles.FirstOrDefaultAsync(x => x.UserId == userId);
-                if(profile!=null)
+                if (profile != null)
                     profile.AspNetUser = await _db.AspNetUsers.FirstOrDefaultAsync(x => x.UserId == userId);
             }
             catch (DataException dex)
@@ -113,7 +163,8 @@ namespace tohow.Data.Repository
             return profile;
         }
 
-        public async Task<tbProfile> GetTbProfileByEmail(string email) {
+        public async Task<tbProfile> GetTbProfileByEmail(string email)
+        {
             tbProfile profile = null;
             try
             {

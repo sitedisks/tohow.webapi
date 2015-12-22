@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Net.Http;
+using System.Web;
+using System.ServiceModel.Channels;
 using tohow.Domain.DTO;
 using tohow.Interface.Service;
 
@@ -47,10 +50,9 @@ namespace tohow.API.Controllers
 
             try
             {
-                profile = await _tohowSvc.LoginUser(req);
+                profile = await _tohowSvc.LoginUser(req, GetClientIp());
                 if (profile == null)
                     return NotFound();
-
             }
             catch (ApplicationException aex)
             {
@@ -143,5 +145,30 @@ namespace tohow.API.Controllers
 
             return Ok(userProfile);
         }
+
+        #region private functions
+        private string GetClientIp(HttpRequestMessage request = null)
+        {
+            request = request ?? Request;
+
+            if (request.Properties.ContainsKey("MS_HttpContext"))
+            {
+                return ((HttpContextWrapper)request.Properties["MS_HttpContext"]).Request.UserHostAddress;
+            }
+            else if (request.Properties.ContainsKey(RemoteEndpointMessageProperty.Name))
+            {
+                RemoteEndpointMessageProperty prop = (RemoteEndpointMessageProperty)request.Properties[RemoteEndpointMessageProperty.Name];
+                return prop.Address;
+            }
+            else if (HttpContext.Current != null)
+            {
+                return HttpContext.Current.Request.UserHostAddress;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        #endregion
     }
 }

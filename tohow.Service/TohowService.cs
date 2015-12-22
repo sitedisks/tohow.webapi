@@ -80,7 +80,7 @@ namespace tohow.Service
             }
         }
 
-        public async Task<UserProfileDetails> LoginUser(UserProfile req)
+        public async Task<UserProfileDetails> LoginUser(UserProfile req, string IPAddress)
         {
             UserProfileDetails userPro = null;
 
@@ -92,6 +92,13 @@ namespace tohow.Service
                     if (Crypter.CheckPassword(req.Password, profile.AspNetUser.PasswordHash))
                     {
                         userPro = profile.ConvertToUserProfile();
+                        var session = await _reposTohowDev.GetSessionByProfileId(userPro.ProfileId);
+                        if (session != null)
+                        {
+                            await _reposTohowDev.DeleteSessionByProfileId(session); //delete the previous session
+                        }
+
+                        await _reposTohowDev.CreateNewSession(userPro, IPAddress);
                     }
                 }
             }

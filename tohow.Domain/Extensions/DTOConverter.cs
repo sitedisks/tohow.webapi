@@ -102,5 +102,20 @@ namespace tohow.Domain.Extensions
 
             return data;
         }
+
+        public static Session ConverToSessionDTO(this tbSession source, Session data = null) {
+            if (data == null)
+                data = new Session();
+
+            if (source == null)
+                return null;
+
+            data.SessionId = source.Id;
+            data.ProfileId = source.ProfileId;
+            data.Expiry = source.Expiry;
+            data.IPAddress = source.IPAddress;
+
+            return data;
+        }
     }
 }

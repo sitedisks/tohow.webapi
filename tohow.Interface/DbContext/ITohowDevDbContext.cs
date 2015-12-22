@@ -20,6 +20,7 @@ namespace tohow.Interface.DbContext
         DbSet<tohow.Domain.Database.tbImage> tblImages { get; set; }
         DbSet<tohow.Domain.Database.AspNetUser> AspNetUsers { get; set; }
         DbSet<tohow.Domain.Database.tbProfile> tbProfiles { get; set; }
+        DbSet<tohow.Domain.Database.tbSession> tbSessions { get; set; }
         #endregion
     }
 }

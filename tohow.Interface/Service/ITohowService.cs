@@ -14,7 +14,7 @@ namespace tohow.Interface.Service
 
         #region user
         Task CreateNewUserProfile(UserProfile req);
-        Task<UserProfileDetails> LoginUser(UserProfile req);
+        Task<UserProfileDetails> LoginUser(UserProfile req, string IPAddress);
         Task<UserProfileDetails> GetUserProfileByUserId(string userId);
         Task<UserProfileDetails> GetUserProfileByProfileId(int profileId);
         Task<UserProfileDetails> GetUserProfileByEmail(string email);
