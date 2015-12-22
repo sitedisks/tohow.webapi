@@ -68,6 +68,22 @@ namespace tohow.API.Controllers
             return Ok(userPro);
         }
 
+        [HttpPost, Route("logout/{sessionId}")]
+        public async Task<IHttpActionResult> Logout([FromUri] Guid sessionId) {
+            try {
+                await _tohowSvc.LogoutUser(sessionId);
+            }
+            catch (ApplicationException aex)
+            {
+                return BadRequest(aex.Message);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+            return Ok();
+        }
+
         [HttpPut, Route("userprofile/update")]
         public async Task<IHttpActionResult> UpdateProfile([FromBody] UserProfileDetails req, [FromUri] int profileId)
         {

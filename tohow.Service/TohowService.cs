@@ -102,6 +102,20 @@ namespace tohow.Service
             }
         }
 
+        public async Task LogoutUser(Guid sessionId) {
+            try {
+                var session = await _reposTohowDev.GetSessionByIdAsync(sessionId);
+                if (session != null)
+                {
+                    await _reposTohowDev.DeleteSessionAsync(session);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error logout user", ex);
+            }
+        }
+
         public async Task<UserProfileDetails> CreateNewUserProfile(UserProfile req)
         {
             UserProfileDetails userPro = new UserProfileDetails();

@@ -17,6 +17,7 @@ namespace tohow.Interface.Repository
         tbSession GetSessionById(Guid sessionId);
         void DeleteSession(tbSession theSession);
         void UpdateSession(tbSession theSession);
+        Task<tbSession> GetSessionByIdAsync(Guid sessionId);
         Task<tbSession> GetSessionByProfileId(long profileId);
         Task CreateNewSession(UserProfileDetails userPro, string IPAddress);
         Task DeleteSessionAsync(tbSession theSession);

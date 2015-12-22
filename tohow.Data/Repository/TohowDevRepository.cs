@@ -98,6 +98,21 @@ namespace tohow.Data.Repository
             }
         }
 
+        public async Task<tbSession> GetSessionByIdAsync(Guid sessionId) {
+            tbSession session = null;
+
+            try
+            {
+                session = await _db.tbSessions.FirstOrDefaultAsync(x => x.Id == sessionId && !x.IsDeleted);
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+
+            return session;
+        }
+
         public async Task<tbSession> GetSessionByProfileId(long profileId)
         {
             tbSession ses = null;

@@ -16,6 +16,7 @@ namespace tohow.Interface.Service
         Session GetSessionById(Guid sessionId);
         void DeleteSession(Session session);
         void UpdateSessionByOneDay(Session session);
+        Task LogoutUser(Guid sessionId);
         Task<UserProfileDetails> CreateNewUserProfile(UserProfile req);
         Task<UserProfileDetails> LoginUser(UserProfile req, string IPAddress);
         Task<UserProfileDetails> GetUserProfileByUserId(string userId);
