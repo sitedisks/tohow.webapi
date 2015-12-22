@@ -70,6 +70,84 @@ namespace tohow.Data.Repository
             return session;
         }
 
+        public void DeleteSession(tbSession theSession)
+        {
+            try
+            {
+                theSession.UpdateDateTime = DateTime.UtcNow;
+                theSession.IsDeleted = true;
+                _db.SaveChanges();
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+        }
+
+        public void UpdateSession(tbSession theSession)
+        {
+            try
+            {
+                theSession.Expiry.AddDays(1);
+                theSession.UpdateDateTime = DateTime.UtcNow;
+                _db.SaveChanges();
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+        }
+
+        public async Task<tbSession> GetSessionByProfileId(long profileId)
+        {
+            tbSession ses = null;
+
+            try
+            {
+                ses = await _db.tbSessions.FirstOrDefaultAsync(x => x.ProfileId == profileId && !x.IsDeleted);
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+
+            return ses;
+        }
+
+        public async Task CreateNewSession(UserProfileDetails userPro, string IPAddress)
+        {
+            try
+            {
+                tbSession ses = new tbSession();
+                ses.Id = Guid.NewGuid();
+                ses.CreateDateTime = DateTime.UtcNow;
+                ses.Expiry = DateTime.UtcNow.AddDays(1);
+                ses.ProfileId = userPro.ProfileId;
+                ses.IPAddress = IPAddress;
+
+                _db.tbSessions.Add(ses);
+                await _db.SaveChangesAsync();
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+        }
+
+        public async Task DeleteSessionAsync(tbSession theSession)
+        {
+            try
+            {
+                theSession.UpdateDateTime = DateTime.UtcNow;
+                theSession.IsDeleted = true;
+                await _db.SaveChangesAsync();
+            }
+            catch (DataException dex)
+            {
+                throw new ApplicationException("Data error!", dex);
+            }
+        }
+
         public async Task<tbProfile> CreateNewUser(UserProfile user)
         {
             tbProfile profile = new tbProfile();
@@ -95,82 +173,6 @@ namespace tohow.Data.Repository
             }
 
             return profile;
-        }
-
-        public async Task CreateNewSession(UserProfileDetails userPro, string IPAddress)
-        {
-            try
-            {
-                tbSession ses = new tbSession();
-                ses.Id = Guid.NewGuid();
-                ses.CreateDateTime = DateTime.UtcNow;
-                ses.Expiry = DateTime.UtcNow.AddDays(1);
-                ses.ProfileId = userPro.ProfileId;
-                ses.IPAddress = IPAddress;
-
-                _db.tbSessions.Add(ses);
-                await _db.SaveChangesAsync();
-            }
-            catch (DataException dex)
-            {
-                throw new ApplicationException("Data error!", dex);
-            }
-        }
-
-        public async Task<tbSession> GetSessionByProfileId(long profileId)
-        {
-            tbSession ses = null;
-
-            try
-            {
-                ses = await _db.tbSessions.FirstOrDefaultAsync(x => x.ProfileId == profileId && !x.IsDeleted);
-            }
-            catch (DataException dex)
-            {
-                throw new ApplicationException("Data error!", dex);
-            }
-
-            return ses;
-        }
-
-        public void DeleteSession(tbSession theSession)
-        {
-            try
-            {
-                theSession.UpdateDateTime = DateTime.UtcNow;
-                theSession.IsDeleted = true;
-                _db.SaveChanges();
-            }
-            catch (DataException dex)
-            {
-                throw new ApplicationException("Data error!", dex);
-            }
-        }
-
-        public void UpdateSession(tbSession theSession) {
-            try {
-                theSession.Expiry.AddDays(1);
-                theSession.UpdateDateTime = DateTime.UtcNow;
-                _db.SaveChanges();
-            }
-            catch (DataException dex)
-            {
-                throw new ApplicationException("Data error!", dex);
-            }
-        }
-
-        public async Task DeleteSessionAsync(tbSession theSession)
-        {
-            try
-            {
-                theSession.UpdateDateTime = DateTime.UtcNow;
-                theSession.IsDeleted = true;
-                await _db.SaveChangesAsync();
-            }
-            catch (DataException dex)
-            {
-                throw new ApplicationException("Data error!", dex);
-            }
         }
 
         public async Task<tbProfile> GetTbProfileByProfileId(int profileId)

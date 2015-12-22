@@ -153,33 +153,31 @@ namespace tohow.API.Filters
                         throw new UnauthorizedAccessException("insufficient credential provided!");
                 }
 
-         
-               
-                    var session = _tohowSvc.GetSessionById(new Guid(token));
+                var session = _tohowSvc.GetSessionById(new Guid(token));
 
-                    if (session == null)
-                    {
-                        if (!IsOptional)
-                            throw new UnauthorizedAccessException("Invalid session");
-                        else
-                            return;
-                    }
+                if (session == null)
+                {
+                    if (!IsOptional)
+                        throw new UnauthorizedAccessException("Invalid session");
+                    else
+                        return;
+                }
 
-                    if (session.Expiry == null ||
-                        session.Expiry < DateTime.UtcNow)
-                    {
-                        _tohowSvc.DeleteSession(session);
+                if (session.Expiry == null ||
+                    session.Expiry < DateTime.UtcNow)
+                {
+                    _tohowSvc.DeleteSession(session);
 
-                        if (!IsOptional)
-                            throw new UnauthorizedAccessException("Expired session");
-                        else
-                            return;
-                    }
+                    if (!IsOptional)
+                        throw new UnauthorizedAccessException("Expired session");
+                    else
+                        return;
+                }
 
-                    _tohowSvc.UpdateSessionByOneDay(session);
+                _tohowSvc.UpdateSessionByOneDay(session);
 
-                    //HttpContext.Current.User = new ToHowAPIUser(new ToHowAPIIdentity { Name = session.t.DisplayName, SessionId = session, ProfileId = session.ProfileId });
-                
+                //HttpContext.Current.User = new ToHowAPIUser(new ToHowAPIIdentity { Name = session.t.DisplayName, SessionId = session, ProfileId = session.ProfileId });
+
             }
             catch (UnauthorizedAccessException uex)
             {
