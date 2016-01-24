@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using tohow.Interface.DbContext;
 using tohow.Interface.Repository;
 using tohow.Domain.Database;
-using System.Data;
 using tohow.Domain.Extensions;
 using tohow.Domain.DTO;
 
