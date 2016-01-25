@@ -7,6 +7,7 @@ using tohow.Interface.Service;
 
 namespace tohow.API.Controllers
 {
+    [RoutePrefix("image")]
     public class ImageController : ApiController
     {
         private readonly ITohowService _tohowSvc;
@@ -15,7 +16,7 @@ namespace tohow.API.Controllers
             _tohowSvc = tohowSvc;
         }
 
-        [Route("image/{imageId:Guid}"), HttpGet]
+        [Route("{imageId:Guid}"), HttpGet]
         public async Task<IHttpActionResult> GetImageByImageId(Guid imageId)
         {
             Image img = new Image();
@@ -37,7 +38,7 @@ namespace tohow.API.Controllers
             return Ok(img);
         }
 
-        [Route("image/{userId}"), HttpGet]
+        [Route("{userId}"), HttpGet]
         public async Task<IHttpActionResult> GetImagesByUserId(int userId) {
             IList<Image> imgList = new List<Image>();
 
